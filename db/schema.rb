@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(:version => 3) do
 
   create_table "headlines", :force => true do |t|
     t.string   "title"
-    t.integer  "is_translated"
+    t.boolean  "is_translated"
     t.text     "url"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
