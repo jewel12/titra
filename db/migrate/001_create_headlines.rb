@@ -2,7 +2,7 @@ class CreateHeadlines < ActiveRecord::Migration
   def self.up
     create_table :headlines do |t|
       t.string :title
-      t.boolean :is_translated
+      t.boolean :is_translated, :default => false
       t.text :url
       t.timestamps
     end
