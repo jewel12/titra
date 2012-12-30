@@ -14,5 +14,4 @@ describe "Headline Model" do
       headline[:is_translated].should_not be_nil
     end
   end
-
 end

@@ -22,6 +22,7 @@ group :test do
   gem 'rb-fsevent'
   gem 'guard-spork'
   gem 'guard-rspec'
+  gem 'factory_girl'
 end
 
 # Padrino Stable Gem
