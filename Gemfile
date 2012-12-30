@@ -15,8 +15,14 @@ gem 'activerecord', :require => "active_record"
 gem 'sqlite3'
 
 # Test requirements
-gem 'rspec', :group => "test"
-gem 'rack-test', :require => "rack/test", :group => "test"
+group :test do
+  gem 'rspec'
+  gem 'rack-test', :require => "rack/test"
+  gem 'spork'
+  gem 'rb-fsevent'
+  gem 'guard-spork'
+  gem 'guard-rspec'
+end
 
 # Padrino Stable Gem
 gem 'padrino', '0.10.7'
@@ -28,3 +34,4 @@ gem 'padrino', '0.10.7'
 # %w(core gen helpers cache mailer admin).each do |g|
 #   gem 'padrino-' + g, '0.10.7'
 # end
+

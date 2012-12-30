@@ -1,13 +1,20 @@
-PADRINO_ENV = 'test' unless defined?(PADRINO_ENV)
-require File.expand_path(File.dirname(__FILE__) + "/../config/boot")
+require 'rubygems'
+require 'spork'
 
-RSpec.configure do |conf|
-  conf.include Rack::Test::Methods
+Spork.prefork do
+  PADRINO_ENV = 'test' unless defined?(PADRINO_ENV)
+  require File.expand_path(File.dirname(__FILE__) + "/../config/boot")
+
+  RSpec.configure do |conf|
+    conf.include Rack::Test::Methods
+  end
+
+  def app
+    Titra.tap { |app|  }
+  end
 end
 
-def app
-  ##
-  # You can handle all padrino applications using instead:
-  #   Padrino.application
-  Titra.tap { |app|  }
+Spork.each_run do
 end
+
+
