@@ -7,8 +7,12 @@ describe "Headline Model" do
     headline.should_not be_nil
   end
 
-  it 'is_translatedの初期値がfalseである' do
-    headline[:is_translated].should be_false
-    headline[:is_translated].should_not be_nil
+  describe "headline#is_translated" do
+    let(:is_translated) { headline.is_translated }
+    it '初期値がfalseである' do
+      headline[:is_translated].should be_false
+      headline[:is_translated].should_not be_nil
+    end
   end
+
 end
