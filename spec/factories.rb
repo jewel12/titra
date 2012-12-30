@@ -12,7 +12,7 @@ FactoryGirl.define do
     url = "http://ruby-example.com/"
   end
 
-  factory :ruby_article_transltion, :class => Translation do
-    f.title = "Rubyは良い"
+  factory :ruby_article_transltion, :class => TitleTranslation do
+    title = "Rubyは良い"
   end
 end
