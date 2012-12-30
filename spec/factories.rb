@@ -1,15 +1,15 @@
 # -*- coding: utf-8 -*-
 FactoryGirl.define do
   factory :account do
-    name = "Yamada"
-    uid = "123456"
-    provider = "github"
+    name "Yamada"
+    uid "123456"
+    provider "github"
   end
 
   factory :headline do
-    title = "Ruby is good!"
-    is_translated = false
-    url = "http://ruby-example.com/"
+    title "Ruby is good!"
+    is_translated false
+    url "http://ruby-example.com/"
 
     factory :headline_with_translations do
       after(:create) do |headline|
