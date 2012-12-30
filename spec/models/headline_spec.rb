@@ -7,11 +7,21 @@ describe "Headline Model" do
     headline.should_not be_nil
   end
 
-  describe "headline#is_translated" do
+  describe "Headline#is_translated" do
     let(:is_translated) { headline.is_translated }
     it '初期値がfalseである' do
       headline[:is_translated].should be_false
       headline[:is_translated].should_not be_nil
+    end
+  end
+
+  context "Headlineのタイトル翻訳がある場合" do
+    let(:headline_with_translations) { FactoryGirl.create(:headline_with_translations) }
+
+    describe "Headline#translations" do
+      subject { headline_with_translations.title_translations }
+
+      it { should have(2).items }
     end
   end
 end
