@@ -15,6 +15,7 @@ gem 'activerecord', :require => "active_record"
 gem 'sqlite3'
 gem 'omniauth'
 gem 'omniauth-github'
+gem 'omniauth-twitter'
 
 # Test requirements
 group :test do
