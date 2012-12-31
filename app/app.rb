@@ -4,8 +4,16 @@ class Titra < Padrino::Application
   register Padrino::Rendering
   register Padrino::Mailer
   register Padrino::Helpers
+  register Padrino::Admin::AccessControl
 
   enable :sessions
+
+  use OmniAuth::Builder do
+    provider :github, ENV['GH_APP_ID'], ENV['GH_APP_SECRET']
+    provider :twitter, ENV['TW_APP_ID'], ENV['TW_APP_SECRET']
+  end
+
+
 
   ##
   # Caching support
