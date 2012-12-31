@@ -18,7 +18,7 @@ describe "Headline Model" do
     end
   end
 
-  context "Headlineのタイトル翻訳がある場合" do
+  context "タイトル翻訳がある場合" do
     let(:headline_with_translations) { FactoryGirl.create(:headline_with_translations) }
 
     describe "#translations" do
@@ -27,7 +27,7 @@ describe "Headline Model" do
     end
   end
 
-  context "HeadlineのTitleを検証するとき" do
+  context "Titleを検証するとき" do
     it "空文字は無効である" do
       FactoryGirl.build(:headline, :title => '').should be_invalid
     end
