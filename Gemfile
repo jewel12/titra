@@ -13,6 +13,8 @@ gem 'sass'
 gem 'haml'
 gem 'activerecord', :require => "active_record"
 gem 'sqlite3'
+gem 'omniauth'
+gem 'omniauth-github'
 
 # Test requirements
 group :test do
