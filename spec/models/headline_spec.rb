@@ -9,6 +9,7 @@ describe "Headline Model" do
 
   describe "Headline#is_translated" do
     let(:is_translated) { headline.is_translated }
+
     it '初期値がfalseである' do
       headline[:is_translated].should be_false
       headline[:is_translated].should_not be_nil
@@ -32,6 +33,18 @@ describe "Headline Model" do
     describe "Headline#translations" do
       subject { headline_with_translations.title_translations }
       it { should have(2).items }
+    end
+  end
+
+  context "HeadlineのTitleを検証するとき" do
+    it "空文字は無効である" do
+      FactoryGirl.build(:headline, :title => '').should be_invalid
+    end
+
+    it "空白のみの内容は無効である" do
+      FactoryGirl.build(:headline, :title => '  ').should be_invalid
+      FactoryGirl.build(:headline, :title => '　　').should be_invalid
+      FactoryGirl.build(:headline, :title => '　 ').should be_invalid
     end
   end
 end
