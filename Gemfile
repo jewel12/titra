@@ -23,6 +23,7 @@ group :test do
   gem 'guard-spork'
   gem 'guard-rspec'
   gem 'factory_girl'
+  gem 'database_cleaner'
 end
 
 # Padrino Stable Gem
