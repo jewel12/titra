@@ -6,6 +6,11 @@ FactoryGirl.define do
     provider "github"
   end
 
+  factory :title_translation do
+    sequence(:title) { |i| "Rubyは良い#{i}" }
+    sequence(:updated_at) { |i| i.days.ago }
+  end
+
   factory :headline do
     title "Ruby is good!"
     is_translated false
@@ -13,14 +18,7 @@ FactoryGirl.define do
 
     factory :headline_with_translations do
       url "http://ruby-example2.com/"
-      after(:create) do |headline|
-        headline.title_translations = FactoryGirl.create_list(:title_translation, 2)
-      end
+      title_translations FactoryGirl.create_list(:title_translation, 2)
     end
-  end
-
-  factory :title_translation do
-    sequence(:title) { |i| "Rubyは良い#{i}" }
-    sequence(:updated_at) { |i| i.days.ago }
   end
 end
