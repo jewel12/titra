@@ -7,15 +7,6 @@ describe "Headline Model" do
     headline.should_not be_nil
   end
 
-  describe "#is_translated" do
-    let(:is_translated) { headline.is_translated }
-
-    it '初期値がfalseである' do
-      headline[:is_translated].should be_false
-      headline[:is_translated].should_not be_nil
-    end
-  end
-
   context "既に存在するURLで登録する場合" do
     before(:all) do
       @registed_headline = FactoryGirl.create(:headline)
