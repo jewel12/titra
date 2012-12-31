@@ -44,4 +44,20 @@ describe "Headline Model" do
       FactoryGirl.build(:headline, :title => 'Hello　World!').should be_valid
     end
   end
+
+  context "URLを検証するとき" do
+    it "URLでない場合は無効" do
+      FactoryGirl.build(:headline, :url => 'kuma').should be_invalid
+      FactoryGirl.build(:headline, :url => '').should be_invalid
+    end
+
+    it "http(s)のスキームである場合は有効" do
+      FactoryGirl.build(:headline, :url => 'http://example.com').should be_valid
+      FactoryGirl.build(:headline, :url => 'https://example.com').should be_valid
+    end
+
+    it "http(s)のスキームでない場合は無効" do
+      FactoryGirl.build(:headline, :url => 'ht://kuma.com').should be_invalid
+    end
+  end
 end
