@@ -28,14 +28,20 @@ describe "Headline Model" do
   end
 
   context "Titleを検証するとき" do
-    it "空文字は無効である" do
+    it "空文字は無効" do
       FactoryGirl.build(:headline, :title => '').should be_invalid
     end
 
-    it "空白のみの内容は無効である" do
+    it "空白のみの内容は無効" do
       FactoryGirl.build(:headline, :title => '  ').should be_invalid
       FactoryGirl.build(:headline, :title => '　　').should be_invalid
       FactoryGirl.build(:headline, :title => '　 ').should be_invalid
+    end
+
+    it "空白を含んだ文字列は有効" do
+      FactoryGirl.build(:headline, :title => 'Hello World!').should be_valid
+      FactoryGirl.build(:headline, :title => ' Hello World!').should be_valid
+      FactoryGirl.build(:headline, :title => 'Hello　World!').should be_valid
     end
   end
 end
