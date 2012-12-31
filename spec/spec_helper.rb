@@ -23,14 +23,12 @@ Spork.prefork do
     end
   end
 
-  FactoryGirl.definition_file_paths = [File.join(Padrino.root, 'spec', 'factories')]
-  FactoryGirl.find_definitions
-
   def app
     Titra.tap { |app|  }
   end
 end
 
 Spork.each_run do
+  FactoryGirl.reload
   Padrino.mounted_apps.each { |app| app.app_obj.reload! }
 end
