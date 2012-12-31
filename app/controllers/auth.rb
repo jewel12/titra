@@ -5,7 +5,7 @@ Titra.controllers :auth do
     account = Account.find_by_provider_and_uid(auth["provider"], auth["uid"]) ||
       Account.create_with_omniauth(auth)
     set_current_account(account)
-    redirect "http://" + request.env["HTTP_HOST"] + url(:index)
+    redirect "http://" + request.env["HTTP_HOST"] + url_for(:headlines, :index)
   end
 
 end
