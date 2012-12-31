@@ -1,5 +1,6 @@
 class Headline < ActiveRecord::Base
   has_many :title_translations
 
-  validates_uniqueness_of :url
+  validates :url, :uniqueness => true
+  validates :title, :presence => true
 end
