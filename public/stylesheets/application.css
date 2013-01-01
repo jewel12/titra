@@ -1,0 +1,73 @@
+/*
+Syntax error: Undefined mixin 'border-radius'.
+        on line 46 of /Users/ideue/works/titra/app/stylesheets/application.scss, in `border-radius'
+        from line 46 of /Users/ideue/works/titra/app/stylesheets/application.scss
+
+41:     @include column(3); }
+42:   #content {
+43:     @include column(21, true); } }
+44: 
+45: .translation {
+46:   @include border-radius(6px);
+47: }
+
+Backtrace:
+/Users/ideue/works/titra/app/stylesheets/application.scss:46:in `border-radius'
+/Users/ideue/works/titra/app/stylesheets/application.scss:46
+/Users/ideue/.rbenv/versions/1.9.3-p286/lib/ruby/gems/1.9.1/gems/sass-3.2.4/lib/sass/tree/visitors/perform.rb:251:in `visit_mixin'
+/Users/ideue/.rbenv/versions/1.9.3-p286/lib/ruby/gems/1.9.1/gems/sass-3.2.4/lib/sass/tree/visitors/base.rb:37:in `visit'
+/Users/ideue/.rbenv/versions/1.9.3-p286/lib/ruby/gems/1.9.1/gems/sass-3.2.4/lib/sass/tree/visitors/perform.rb:98:in `visit'
+/Users/ideue/.rbenv/versions/1.9.3-p286/lib/ruby/gems/1.9.1/gems/sass-3.2.4/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
+/Users/ideue/.rbenv/versions/1.9.3-p286/lib/ruby/gems/1.9.1/gems/sass-3.2.4/lib/sass/tree/visitors/base.rb:53:in `map'
+/Users/ideue/.rbenv/versions/1.9.3-p286/lib/ruby/gems/1.9.1/gems/sass-3.2.4/lib/sass/tree/visitors/base.rb:53:in `visit_children'
+/Users/ideue/.rbenv/versions/1.9.3-p286/lib/ruby/gems/1.9.1/gems/sass-3.2.4/lib/sass/tree/visitors/perform.rb:107:in `block in visit_children'
+/Users/ideue/.rbenv/versions/1.9.3-p286/lib/ruby/gems/1.9.1/gems/sass-3.2.4/lib/sass/tree/visitors/perform.rb:119:in `with_environment'
+/Users/ideue/.rbenv/versions/1.9.3-p286/lib/ruby/gems/1.9.1/gems/sass-3.2.4/lib/sass/tree/visitors/perform.rb:106:in `visit_children'
+/Users/ideue/.rbenv/versions/1.9.3-p286/lib/ruby/gems/1.9.1/gems/sass-3.2.4/lib/sass/tree/visitors/base.rb:37:in `block in visit'
+/Users/ideue/.rbenv/versions/1.9.3-p286/lib/ruby/gems/1.9.1/gems/sass-3.2.4/lib/sass/tree/visitors/perform.rb:318:in `visit_rule'
+/Users/ideue/.rbenv/versions/1.9.3-p286/lib/ruby/gems/1.9.1/gems/sass-3.2.4/lib/sass/tree/visitors/base.rb:37:in `visit'
+/Users/ideue/.rbenv/versions/1.9.3-p286/lib/ruby/gems/1.9.1/gems/sass-3.2.4/lib/sass/tree/visitors/perform.rb:98:in `visit'
+/Users/ideue/.rbenv/versions/1.9.3-p286/lib/ruby/gems/1.9.1/gems/sass-3.2.4/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
+/Users/ideue/.rbenv/versions/1.9.3-p286/lib/ruby/gems/1.9.1/gems/sass-3.2.4/lib/sass/tree/visitors/base.rb:53:in `map'
+/Users/ideue/.rbenv/versions/1.9.3-p286/lib/ruby/gems/1.9.1/gems/sass-3.2.4/lib/sass/tree/visitors/base.rb:53:in `visit_children'
+/Users/ideue/.rbenv/versions/1.9.3-p286/lib/ruby/gems/1.9.1/gems/sass-3.2.4/lib/sass/tree/visitors/perform.rb:107:in `block in visit_children'
+/Users/ideue/.rbenv/versions/1.9.3-p286/lib/ruby/gems/1.9.1/gems/sass-3.2.4/lib/sass/tree/visitors/perform.rb:119:in `with_environment'
+/Users/ideue/.rbenv/versions/1.9.3-p286/lib/ruby/gems/1.9.1/gems/sass-3.2.4/lib/sass/tree/visitors/perform.rb:106:in `visit_children'
+/Users/ideue/.rbenv/versions/1.9.3-p286/lib/ruby/gems/1.9.1/gems/sass-3.2.4/lib/sass/tree/visitors/base.rb:37:in `block in visit'
+/Users/ideue/.rbenv/versions/1.9.3-p286/lib/ruby/gems/1.9.1/gems/sass-3.2.4/lib/sass/tree/visitors/perform.rb:126:in `visit_root'
+/Users/ideue/.rbenv/versions/1.9.3-p286/lib/ruby/gems/1.9.1/gems/sass-3.2.4/lib/sass/tree/visitors/base.rb:37:in `visit'
+/Users/ideue/.rbenv/versions/1.9.3-p286/lib/ruby/gems/1.9.1/gems/sass-3.2.4/lib/sass/tree/visitors/perform.rb:98:in `visit'
+/Users/ideue/.rbenv/versions/1.9.3-p286/lib/ruby/gems/1.9.1/gems/sass-3.2.4/lib/sass/tree/visitors/perform.rb:7:in `visit'
+/Users/ideue/.rbenv/versions/1.9.3-p286/lib/ruby/gems/1.9.1/gems/sass-3.2.4/lib/sass/tree/root_node.rb:20:in `render'
+/Users/ideue/.rbenv/versions/1.9.3-p286/lib/ruby/gems/1.9.1/gems/sass-3.2.4/lib/sass/engine.rb:315:in `_render'
+/Users/ideue/.rbenv/versions/1.9.3-p286/lib/ruby/gems/1.9.1/gems/sass-3.2.4/lib/sass/engine.rb:262:in `render'
+/Users/ideue/.rbenv/versions/1.9.3-p286/lib/ruby/gems/1.9.1/gems/sass-3.2.4/lib/sass/plugin/compiler.rb:341:in `update_stylesheet'
+/Users/ideue/.rbenv/versions/1.9.3-p286/lib/ruby/gems/1.9.1/gems/sass-3.2.4/lib/sass/plugin/compiler.rb:203:in `block in update_stylesheets'
+/Users/ideue/.rbenv/versions/1.9.3-p286/lib/ruby/gems/1.9.1/gems/sass-3.2.4/lib/sass/plugin/compiler.rb:201:in `each'
+/Users/ideue/.rbenv/versions/1.9.3-p286/lib/ruby/gems/1.9.1/gems/sass-3.2.4/lib/sass/plugin/compiler.rb:201:in `update_stylesheets'
+/Users/ideue/.rbenv/versions/1.9.3-p286/lib/ruby/gems/1.9.1/gems/sass-3.2.4/lib/sass/plugin.rb:81:in `update_stylesheets'
+/Users/ideue/.rbenv/versions/1.9.3-p286/lib/ruby/gems/1.9.1/gems/sass-3.2.4/lib/sass/plugin.rb:54:in `check_for_updates'
+/Users/ideue/.rbenv/versions/1.9.3-p286/lib/ruby/gems/1.9.1/gems/sass-3.2.4/lib/sass/plugin/rack.rb:51:in `call'
+/Users/ideue/.rbenv/versions/1.9.3-p286/lib/ruby/gems/1.9.1/gems/activerecord-3.2.9/lib/active_record/connection_adapters/abstract/connection_pool.rb:479:in `call'
+/Users/ideue/.rbenv/versions/1.9.3-p286/lib/ruby/gems/1.9.1/gems/rack-1.4.1/lib/rack/head.rb:9:in `call'
+/Users/ideue/.rbenv/versions/1.9.3-p286/lib/ruby/gems/1.9.1/gems/rack-1.4.1/lib/rack/methodoverride.rb:21:in `call'
+/Users/ideue/.rbenv/versions/1.9.3-p286/lib/ruby/gems/1.9.1/gems/padrino-core-0.10.7/lib/padrino-core/reloader.rb:250:in `call'
+/Users/ideue/.rbenv/versions/1.9.3-p286/lib/ruby/gems/1.9.1/gems/padrino-core-0.10.7/lib/padrino-core/logger.rb:388:in `call'
+/Users/ideue/.rbenv/versions/1.9.3-p286/lib/ruby/gems/1.9.1/gems/sinatra-1.3.3/lib/sinatra/showexceptions.rb:21:in `call'
+/Users/ideue/.rbenv/versions/1.9.3-p286/lib/ruby/gems/1.9.1/gems/rack-1.4.1/lib/rack/session/abstract/id.rb:205:in `context'
+/Users/ideue/.rbenv/versions/1.9.3-p286/lib/ruby/gems/1.9.1/gems/rack-1.4.1/lib/rack/session/abstract/id.rb:200:in `call'
+/Users/ideue/.rbenv/versions/1.9.3-p286/lib/ruby/gems/1.9.1/gems/sinatra-1.3.3/lib/sinatra/base.rb:1389:in `block in call'
+/Users/ideue/.rbenv/versions/1.9.3-p286/lib/ruby/gems/1.9.1/gems/sinatra-1.3.3/lib/sinatra/base.rb:1471:in `synchronize'
+/Users/ideue/.rbenv/versions/1.9.3-p286/lib/ruby/gems/1.9.1/gems/sinatra-1.3.3/lib/sinatra/base.rb:1389:in `call'
+/Users/ideue/.rbenv/versions/1.9.3-p286/lib/ruby/gems/1.9.1/gems/padrino-core-0.10.7/lib/padrino-core/router.rb:83:in `block in call'
+/Users/ideue/.rbenv/versions/1.9.3-p286/lib/ruby/gems/1.9.1/gems/padrino-core-0.10.7/lib/padrino-core/router.rb:76:in `each'
+/Users/ideue/.rbenv/versions/1.9.3-p286/lib/ruby/gems/1.9.1/gems/padrino-core-0.10.7/lib/padrino-core/router.rb:76:in `call'
+/Users/ideue/.rbenv/versions/1.9.3-p286/lib/ruby/gems/1.9.1/gems/rack-1.4.1/lib/rack/handler/webrick.rb:59:in `service'
+/Users/ideue/.rbenv/versions/1.9.3-p286/lib/ruby/1.9.1/webrick/httpserver.rb:138:in `service'
+/Users/ideue/.rbenv/versions/1.9.3-p286/lib/ruby/1.9.1/webrick/httpserver.rb:94:in `run'
+/Users/ideue/.rbenv/versions/1.9.3-p286/lib/ruby/1.9.1/webrick/server.rb:191:in `block in start_thread'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Syntax error: Undefined mixin 'border-radius'.\A         on line 46 of /Users/ideue/works/titra/app/stylesheets/application.scss, in `border-radius'\A         from line 46 of /Users/ideue/works/titra/app/stylesheets/application.scss\A \A 41:     @include column(3); }\A 42:   #content {\A 43:     @include column(21, true); } }\A 44: \A 45: .translation {\A 46:   @include border-radius(6px);\A 47: }"; }

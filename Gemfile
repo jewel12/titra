@@ -9,7 +9,7 @@ gem 'rake'
 gem 'sinatra-flash', :require => 'sinatra/flash'
 
 # Component requirements
-gem 'sass'
+gem 'compass'
 gem 'haml'
 gem 'activerecord', :require => "active_record"
 gem 'sqlite3'
@@ -39,4 +39,3 @@ gem 'padrino', '0.10.7'
 # %w(core gen helpers cache mailer admin).each do |g|
 #   gem 'padrino-' + g, '0.10.7'
 # end
-
