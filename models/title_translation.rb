@@ -2,7 +2,7 @@ class TitleTranslation < ActiveRecord::Base
   belongs_to :headline
   belongs_to :translator, :class_name => 'Account'
 
-  validates :headline, :presence => true
+  validates :headline_id, :presence => true, :uniqueness => { :scope => :translator_id }
   validates :title, :presence => true, :space => true
 
   def self.create_with_translator(translator, params)

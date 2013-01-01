@@ -6,7 +6,7 @@ FactoryGirl.define do
     headline {FactoryGirl.create(:headline)}
 
     factory :human_translated_title_translation do
-      account {FactoryGirl.create(:account)}
+      translator {FactoryGirl.create(:account)}
     end
   end
 end

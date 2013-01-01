@@ -11,6 +11,17 @@ describe "TitleTranslation Model" do
     FactoryGirl.build(:title_translation, :headline => nil).should be_invalid
   end
 
+  it "同じヘッドラインとアカウントの組み合わせを持つ翻訳は１つのみ" do
+    title_old = FactoryGirl.create(:human_translated_title_translation, :title => "title_old")
+    title_old.should be_valid
+
+    title_new = FactoryGirl.build(:human_translated_title_translation,
+                                  :title => "title_new",
+                                  :headline => title_old.headline,
+                                  :translator => title_old.translator)
+    title_new.should be_invalid
+  end
+
   context "翻訳されたタイトルを検証するとき" do
     it "空文字は無効" do
       FactoryGirl.build(:title_translation, :title => '').should be_invalid
@@ -28,4 +39,5 @@ describe "TitleTranslation Model" do
       FactoryGirl.build(:title_translation, :title => ' Ruby　はいい').should be_valid
     end
   end
+
 end
