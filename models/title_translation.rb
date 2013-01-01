@@ -4,4 +4,12 @@ class TitleTranslation < ActiveRecord::Base
 
   validates :headline, :presence => true
   validates :title, :presence => true, :space => true
+
+  def self.create_with_translator(translator, params)
+    create! do |translation|
+      translation.title = params[:title]
+      translation.headline_id = params[:headline_id]
+      translation.translator = translator
+    end
+  end
 end
