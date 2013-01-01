@@ -40,4 +40,35 @@ describe "TitleTranslation Model" do
     end
   end
 
+  describe ".create_or_update" do
+    before(:each) do
+      @translator = FactoryGirl.create(:account)
+      @headline = FactoryGirl.create(:headline)
+    end
+
+    it "新規に登録できる" do
+      lambda{
+        TitleTranslation.create_or_update(:title => 'Ruby',
+                                          :translator => @translator,
+                                          :headline => @headline)
+      }.should change(TitleTranslation, :count).by(1)
+    end
+
+    it "既に同じ翻訳者と記事が存在する場合は更新する" do
+      old_title = 'old'
+      new_title = 'updated'
+      translated_title = FactoryGirl.create(:human_translated_title_translation, :title => old_title)
+
+      TitleTranslation.find(translated_title.id).title.should == old_title
+
+      TitleTranslation.create_or_update(:title => new_title,
+                                        :translator => translated_title.translator,
+                                        :headline => translated_title.headline)
+
+      TitleTranslation.find(translated_title.id).title.should == new_title
+    end
+
+
+  end
+
 end
