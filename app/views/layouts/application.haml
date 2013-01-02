@@ -10,7 +10,7 @@
       #header
         #title
           #left
-            %span#title 鯛虎
+            %span#title= link_to '鯛虎', url_for(:headlines, :index)
             %span Web Title Translation
           #right
             - if logged_in?
