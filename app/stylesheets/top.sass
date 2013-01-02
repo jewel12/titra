@@ -1,5 +1,21 @@
 @import compass
 
+//
+// Mix-in
+//
+
+@mixin block-center
+  margin:
+    left: auto
+    right: auto
+
+//
+// Colors
+//
+
+$aka: #ED0404
+$midori: #028E8E
+
 body
   font-family: 'ヒラギノ角ゴ Pro W3','Hiragino Kaku Gothic Pro','メイリオ',Meiryo,'ＭＳ Ｐゴシック',sans-serif
   background:
@@ -19,9 +35,7 @@ h1
   @include single-text-shadow
 
 div#main
-  margin:
-    left: auto
-    right: auto
+  @include block-center
   width: 80%
   padding: 10px
   @include background-image(linear-gradient(lighten(#F7F7F7, 50%), #F7F7F7))
@@ -42,13 +56,13 @@ div#header
       @include float-left
       span#title
         padding: 3px
-        background-color: #ED0404
+        background-color: $aka
         color: white
     div#right
       @include clearfix
       text-align: right
       a
-        color: #028E8E
+        color: $midori
 
 div#content
   width: 100%
@@ -79,9 +93,7 @@ div.translation
 div#login_select
   text-align: center
   width: 80%
-  margin:
-    left: auto
-    right: auto
+  @include block-center
 
 div#github, div#twitter
   @include single-box-shadow
@@ -91,7 +103,7 @@ div#github, div#twitter
     size: 20px
     family: Verdana, Arial, sans-serif
   a
-    color: #ED0404
+    color: $aka
     text-decoration: none
 
 div#github
@@ -103,3 +115,53 @@ div#twitter
   @include clearfix
   @include border-right-radius(10px)
   background-color: #CBF5F5
+
+//
+// Form
+//
+div#form
+  padding: 20px
+  text-align: center
+  table
+    text-align: left
+    width: 90%
+    @include block-center
+    tr
+      width: 100%
+    td.label
+      width: 15%
+    label
+      font-size: 10px
+    input, textarea
+      border: 1px solid rgba(0,0,0,0.1)
+      width: 100%
+    textarea#headline_title
+      color: $aka
+      font:
+        size: 20px
+        weight: bold
+    input#headline_url
+      font:
+        size: 10px
+      height: 15px
+      color: gray
+    textarea#translation
+      font:
+        size: 20px
+        weight: bold
+      height: 25px
+    input:focus, textarea:focus
+      @include single-box-shadow
+  p
+    padding-top: 20px
+  input.button
+    color: white
+    font:
+      size: 20px
+      weight: bold
+    border: solid 1px gray
+    padding: 5px 40px
+    background-color: $midori
+    text-shadow: 1px -1px rgba(0,0,0,0.5)
+  input.button:hover
+    @include box-shadow(rgba(0,0,0,0.2) 0 0 0 2px inset)
