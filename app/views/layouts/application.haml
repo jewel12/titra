@@ -8,9 +8,14 @@
   %body
     #main
       #header
-        %p
-          %span.title 鯛虎
-          %span Web Title Translation
-        - unless logged_in?
-          %h1 海外WEB記事の要約を共有しよう！
+        #title
+          #left
+            %span#title 鯛虎
+            %span Web Title Translation
+          #right
+            - if logged_in?
+              %span= link_to 'login', url_for(:auth, :login)
+        - if logged_in?
+          #info
+            %h1 海外WEB記事の要約を共有しよう！
       #content= yield

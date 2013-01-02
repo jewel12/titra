@@ -19,7 +19,8 @@ div#main
   @include single-box-shadow
 
 div#header
-  p
+  width: 100%
+  div#title
     color: gray
     font:
       weight: bold
@@ -27,8 +28,16 @@ div#header
       family: Verdana, Arial, sans-serif
     border-bottom: 1px solid #ED0404
     padding-left: 5px
-    span.title
-      color: #ED0404
+    div#left
+      @include float-left
+      span#title
+        color: #ED0404
+    div#right
+      @include clearfix
+      text-align: right
+      a
+        color: #028E8E
+        text-decoration: none
   h1
     color: #028E8E
     text:
