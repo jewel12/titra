@@ -60,4 +60,58 @@ describe "Headline Model" do
       FactoryGirl.build(:headline, :url => 'ht://kuma.com').should be_invalid
     end
   end
+
+  describe ".create_with_title_translation" do
+    context "HeadlineのURLがまだ登録されていない場合" do
+      before(:each) do
+        headline = FactoryGirl.build(:headline)
+        params = {
+          :url => headline.url,
+          :title => headline.title,
+          :translation => "これは翻訳です",
+          :account => FactoryGirl.create(:account)
+        }
+      end
+
+      it "Headlineの数は増加していること" do
+        lambda {
+          Headline.create_with_title_translation(@params)
+        }.should change(Headline, :count).by(1)
+      end
+
+      it "TitleTranslationsの数は増加していること" do
+        lambda {
+          headline = Headline.create_with_title_translation(@params)
+        }.should change(Translations, :count).by(1)
+      end
+    end
+
+    context "HeadlineのURLが既に登録されている場合" do
+      before(:each) do
+        @existing_headline = FactoryGirl.create(:headline)
+        @params = {
+          :url => @existing_headline.url,
+          :title => @existing_headline.title,
+          :translation => "これは翻訳です",
+          :account => FactoryGirl.create(:account)
+        }
+      end
+
+      it "Headlineの数は変化しないこと" do
+        lambda {
+          Headline.create_with_title_translation(@params)
+        }.should_not change(Headline, :count)
+      end
+
+      it "作成したheadline_idを持つTitleTranslationsの数は増加していること" do
+        where = TitleTranslation.where(:headline_id => @existing_headline.id)
+        lambda {
+          headline = Headline.create_with_title_translation(@params)
+        }.should change(where.all, :size).by(1)
+      end
+    end
+
+  end
+
+
 end
