@@ -64,6 +64,7 @@ describe "Headline Model" do
   describe ".create_with_title_translation" do
     context "HeadlineのURLがまだ登録されていない場合" do
       before(:each) do
+        FactoryGirl.create(:headline) # 2回呼んでおく
         headline = FactoryGirl.build(:headline)
         @params = {
           :url => headline.url,
@@ -88,6 +89,7 @@ describe "Headline Model" do
 
     context "HeadlineのURLが既に登録されている場合" do
       before(:each) do
+        FactoryGirl.create(:headline) # 2回呼んでおく
         @existing_headline = FactoryGirl.create(:headline)
         @params = {
           :url => @existing_headline.url,
