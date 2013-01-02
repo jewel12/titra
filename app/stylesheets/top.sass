@@ -1,0 +1,58 @@
+@import compass
+
+body
+  font-family: 'ヒラギノ角ゴ Pro W3','Hiragino Kaku Gothic Pro','メイリオ',Meiryo,'ＭＳ Ｐゴシック',sans-serif
+  background:
+    image: url("/images/skin_side_up.png")
+
+p
+  margin: 0
+  padding: 0
+
+div#main
+  margin:
+    left: auto
+    right: auto
+  width: 80%
+  padding: 10px
+  @include background-image(linear-gradient(lighten(#F7F7F7, 50%), #F7F7F7))
+  @include single-box-shadow
+
+div#header
+  p
+    color: gray
+    font:
+      weight: bold
+      size: 15px
+      family: Verdana, Arial, sans-serif
+    border-bottom: 1px solid #ED0404
+    padding-left: 5px
+    span.title
+      color: #ED0404
+  h1
+    color: #028E8E
+    text:
+      align: center
+    @include single-text-shadow
+
+div#content
+  padding: 5px
+  padding-top: 10px
+
+div.translation
+  margin-bottom: 5px
+  span.translated_title
+    a
+      color: #632D00
+      font:
+        weight: bold
+        size: 15px
+      text-decoration: none
+      @include single-text-shadow
+  span.translator, span.original_title, span.detail
+    font-size: 10px
+  span.original_title
+    color: #ED6D04
+  span.detail
+    a
+      color: #235353

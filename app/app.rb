@@ -1,9 +1,9 @@
 class Titra < Padrino::Application
-  register SassInitializer
   use ActiveRecord::ConnectionAdapters::ConnectionManagement
   register Padrino::Rendering
   register Padrino::Mailer
   register Padrino::Helpers
+  register CompassInitializer
   register Padrino::Admin::AccessControl
 
   enable :sessions
@@ -12,8 +12,6 @@ class Titra < Padrino::Application
     provider :github, ENV['GH_APP_ID'], ENV['GH_APP_SECRET']
     provider :twitter, ENV['TW_APP_ID'], ENV['TW_APP_SECRET']
   end
-
-
 
   ##
   # Caching support

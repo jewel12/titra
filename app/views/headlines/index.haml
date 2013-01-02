@@ -1,17 +1,25 @@
-%p= link_to('Github', '/auth/github')
-
-- form_for :headline, '/headlines/new' do |f|
-  %p
-    = f.label :title
-    = f.text_field :title
-  %p
-    = f.label :url
-    = f.text_field :url
-  %p
-    = f.submit "Create", :class => 'button'
-
-- @headlines.each do |headline|
-  %p= headline.title
-  %p= headline.title_translations
-  %p= link_to 'kuwasii', url_for(:headlines, :show, :id => headline.id)
-
+!!!XML
+!!!
+%html
+  %head
+    %meta{'http-equiv' => 'content', :content => 'text/html; charset=utf-8'}
+    =stylesheet_link_tag 'top'
+    %title 鯛虎 | Web Title Translation
+  %body
+    %div#main
+      %div#header
+        %p
+          %span.title 鯛虎
+          %span Web Title Translation
+        - unless logged_in?
+          %h1 海外WEB記事の要約を共有しよう！
+      %div#content
+        %div#translations
+        - @headlines_with_best_translation.each do |headline, translation|
+          %div.translation
+            %p.title
+              %span.translated_title= link_to translation.title, headline.url
+              %span.translator by #{translation.translator.name}
+              %span.detail= link_to '詳細', url_for(:headlines, :show, :id => headline.id)
+            %p
+              %span.original_title= headline.title

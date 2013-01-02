@@ -4,4 +4,4 @@
 :mock: none
 :script: jquery
 :renderer: haml
-:stylesheet: sass
+:stylesheet: compass
