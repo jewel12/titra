@@ -8,15 +8,18 @@
   %body
     %div#main
       %div#header
-        %p 鯛虎 | Web Title Translation
-        -# %h1 海外WEB記事の要約を共有しよう！
+        %p
+          %span.title 鯛虎
+          %span Web Title Translation
+        - unless logged_in?
+          %h1 海外WEB記事の要約を共有しよう！
       %div#content
         %div#translations
         - @headlines_with_best_translation.each do |headline, translation|
           %div.translation
-            %p
-              %span.translated_title=translation.title
+            %p.title
+              %span.translated_title= link_to translation.title, headline.url
               %span.translator by #{translation.translator.name}
+              %span.detail= link_to '詳細', url_for(:headlines, :show, :id => headline.id)
             %p
-              %span=headline.title
-              %span= link_to '詳細', url_for(:headlines, :show, :id => headline.id)
+              %span.original_title= headline.title
