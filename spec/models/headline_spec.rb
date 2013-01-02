@@ -82,7 +82,7 @@ describe "Headline Model" do
       it "TitleTranslationsの数は増加していること" do
         lambda {
           headline = Headline.create_with_title_translation(@params)
-        }.should change(Translations, :count).by(1)
+        }.should change(TitleTranslation, :count).by(1)
       end
     end
 
