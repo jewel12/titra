@@ -14,8 +14,6 @@ class Headline < ActiveRecord::Base
   end
 
   def self.create_with_title_translation(params)
-    warn Headline.all
-
     headline = Headline.where(:url => params[:url], :title => params[:title]).first_or_create
 
     tr_params = {
