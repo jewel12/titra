@@ -9,6 +9,14 @@ p
   margin: 0
   padding: 0
 
+h1, h3
+  text:
+    align: center
+
+h1
+  color: #028E8E
+  @include single-text-shadow
+
 div#main
   margin:
     left: auto
@@ -38,13 +46,9 @@ div#header
       a
         color: #028E8E
         text-decoration: none
-  h1
-    color: #028E8E
-    text:
-      align: center
-    @include single-text-shadow
 
 div#content
+  width: 100%
   padding: 5px
   padding-top: 10px
 
@@ -65,3 +69,34 @@ div.translation
   span.detail
     a
       color: #235353
+
+//
+// Login Selecting
+//
+div#login_select
+  text-align: center
+  width: 80%
+  margin:
+    left: auto
+    right: auto
+
+div#github, div#twitter
+  @include single-box-shadow
+  padding: 5%
+  width: 40%
+  font:
+    size: 20px
+    family: Verdana, Arial, sans-serif
+  a
+    color: #ED0404
+    text-decoration: none
+
+div#github
+  @include float-left
+  @include border-left-radius(10px)
+  background-color: #CEF9CE
+
+div#twitter
+  @include clearfix
+  @include border-right-radius(10px)
+  background-color: #CBF5F5
