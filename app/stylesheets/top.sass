@@ -9,6 +9,14 @@ p
   margin: 0
   padding: 0
 
+h1, h3
+  text:
+    align: center
+
+h1
+  color: #028E8E
+  @include single-text-shadow
+
 div#main
   margin:
     left: auto
@@ -19,7 +27,8 @@ div#main
   @include single-box-shadow
 
 div#header
-  p
+  width: 100%
+  div#title
     color: gray
     font:
       weight: bold
@@ -27,15 +36,19 @@ div#header
       family: Verdana, Arial, sans-serif
     border-bottom: 1px solid #ED0404
     padding-left: 5px
-    span.title
-      color: #ED0404
-  h1
-    color: #028E8E
-    text:
-      align: center
-    @include single-text-shadow
+    div#left
+      @include float-left
+      span#title
+        color: #ED0404
+    div#right
+      @include clearfix
+      text-align: right
+      a
+        color: #028E8E
+        text-decoration: none
 
 div#content
+  width: 100%
   padding: 5px
   padding-top: 10px
 
@@ -56,3 +69,34 @@ div.translation
   span.detail
     a
       color: #235353
+
+//
+// Login Selecting
+//
+div#login_select
+  text-align: center
+  width: 80%
+  margin:
+    left: auto
+    right: auto
+
+div#github, div#twitter
+  @include single-box-shadow
+  padding: 5%
+  width: 40%
+  font:
+    size: 20px
+    family: Verdana, Arial, sans-serif
+  a
+    color: #ED0404
+    text-decoration: none
+
+div#github
+  @include float-left
+  @include border-left-radius(10px)
+  background-color: #CEF9CE
+
+div#twitter
+  @include clearfix
+  @include border-right-radius(10px)
+  background-color: #CBF5F5
