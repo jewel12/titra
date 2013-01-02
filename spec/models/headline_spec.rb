@@ -67,10 +67,12 @@ describe "Headline Model" do
         FactoryGirl.create(:headline) # 2回呼んでおく
         headline = FactoryGirl.build(:headline)
         @params = {
-          :url => headline.url,
-          :title => headline.title,
+          :headline => {
+            :url => headline.url,
+            :title => headline.title,
+          },
           :translation => "これは翻訳です",
-          :account => FactoryGirl.create(:account)
+          :translator => FactoryGirl.create(:account)
         }
       end
 
@@ -92,10 +94,12 @@ describe "Headline Model" do
         FactoryGirl.create(:headline) # 2回呼んでおく
         @existing_headline = FactoryGirl.create(:headline)
         @params = {
-          :url => @existing_headline.url,
-          :title => @existing_headline.title,
+          :headline => {
+            :url => @existing_headline.url,
+            :title => @existing_headline.title,
+          },
           :translation => "これは翻訳です",
-          :account => FactoryGirl.create(:account)
+          :translator => FactoryGirl.create(:account)
         }
       end
 
