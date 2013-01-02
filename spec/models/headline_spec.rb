@@ -65,7 +65,7 @@ describe "Headline Model" do
     context "HeadlineのURLがまだ登録されていない場合" do
       before(:each) do
         headline = FactoryGirl.build(:headline)
-        params = {
+        @params = {
           :url => headline.url,
           :title => headline.title,
           :translation => "これは翻訳です",
@@ -104,10 +104,10 @@ describe "Headline Model" do
       end
 
       it "作成したheadline_idを持つTitleTranslationsの数は増加していること" do
-        where = TitleTranslation.where(:headline_id => @existing_headline.id)
+        counter = lambda { TitleTranslation.where(:headline_id => @existing_headline.id).all.count }
         lambda {
           headline = Headline.create_with_title_translation(@params)
-        }.should change(where.all, :size).by(1)
+        }.should change(counter, :call).by(1)
       end
     end
 

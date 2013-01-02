@@ -12,4 +12,18 @@ class Headline < ActiveRecord::Base
       translation.blank? ? nil : [headline, translation]
     }.compact
   end
+
+  def self.create_with_title_translation(params)
+    headline = Headline.first_or_create(:url => params[:url], :title => params[:title])
+
+    tr_params = {
+      :headline => headline,
+      :translator => params[:account],
+      :title => params[:translation]
+    }
+    TitleTranslation.create_or_update(tr_params)
+
+    return headline
+  end
+
 end

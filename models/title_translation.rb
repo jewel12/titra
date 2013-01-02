@@ -10,6 +10,7 @@ class TitleTranslation < ActiveRecord::Base
               :translator_id => params[:translator].id).first_or_create
     t.title = params[:title]
     t.save!
+    return t
   end
 
 
