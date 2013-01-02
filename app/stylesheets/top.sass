@@ -27,12 +27,10 @@ p
   padding: 0
 
 h1, h3
-  text:
-    align: center
+  text-align: center
 
-h1
+h3
   color: #028E8E
-  @include single-text-shadow
 
 div#main
   @include block-center
@@ -65,6 +63,15 @@ div#header
       text-align: right
       a
         color: $midori
+  div#info
+    @include single-text-shadow
+    text-align: center
+    h1
+      margin-bottom: 0
+    p
+      font:
+        size: 15px
+        weight: bold
 
 div#content
   width: 100%

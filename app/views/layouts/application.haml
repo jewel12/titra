@@ -14,10 +14,11 @@
             %span Web Title Translation
           #right
             - if logged_in?
-              %span= link_to 'logout', url(:logout)
+              %span= link_to html_escape(current_account.name), url(:profile)
             - else
               %span= link_to 'login', url(:login)
         - unless logged_in?
           #info
             %h1 海外WEB記事の要約を共有しよう！
+            %p 海外の最新情報を日本語で共有しましょう。ログインすると記事タイトルの翻訳を投稿することもできます。
       #content= yield
