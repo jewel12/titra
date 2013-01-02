@@ -1,6 +1,6 @@
-%div#translations
+#translations
 - @headlines_with_best_translation.each do |headline, translation|
-  %div.translation
+  .translation
     %p.title
       %span.translated_title= link_to translation.title, headline.url
       %span.translator by #{translation.translator.name}
