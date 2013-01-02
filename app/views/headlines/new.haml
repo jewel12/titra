@@ -1,0 +1,16 @@
+#form
+  - form_for :headline, '/headlines/create', :id => "new_form" do |f|
+    %table
+      %tr
+        %td.label= f.label :title, :caption => "タイトル"
+        %td.content= f.text_area :title, :value => @title || ""
+      %tr
+        %td.label= f.label :url, :caption => "URL"
+        %td.content= f.text_field :url, :value => @url || ""
+      %tr
+        %td.label= label_tag :translation, :caption => "タイトルの翻訳"
+        %td.content= text_area_tag :translation, :id => "translation"
+    %p= f.submit "投稿", :class => 'button'
+=javascript_include_tag 'jquery.js'
+=javascript_include_tag 'jquery.autosize-min.js'
+=javascript_include_tag 'application.js'

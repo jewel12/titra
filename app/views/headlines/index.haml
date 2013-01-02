@@ -2,8 +2,8 @@
 - @headlines_with_best_translation.each do |headline, translation|
   .translation
     %p.title
-      %span.translated_title= link_to translation.title, headline.url
-      %span.translator by #{translation.translator.name}
+      %span.translated_title= link_to html_escape(translation.title), html_escape(headline.url)
+      %span.translator by #{html_escape(translation.translator.name)}
       %span.detail= link_to '詳細', url_for(:headlines, :show, :id => headline.id)
     %p
-      %span.original_title= headline.title
+      %span.original_title= html_escape(headline.title)

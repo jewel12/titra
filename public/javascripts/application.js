@@ -1,1 +1,4 @@
-// Put your application scripts here
+$(document).ready(function(){
+    $('textarea').autosize();
+    $('textarea#translation').focus();
+});
