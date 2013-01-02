@@ -17,4 +17,7 @@
               %span= link_to 'logout', url(:logout)
             - else
               %span= link_to 'login', url(:login)
+        - unless logged_in?
+          #info
+            %h1 海外WEB記事の要約を共有しよう！
       #content= yield
