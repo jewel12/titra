@@ -44,8 +44,8 @@ describe "Account Model" do
     end
 
     it "3つ翻訳を持っている" do
-      pending
-      @account.title_translations.count
+      @account.title_translations.should have(3).items
+      FactoryGirl.create(:account).title_translations.should be_empty
     end
   end
 end
