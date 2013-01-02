@@ -72,7 +72,7 @@ describe "Headline Model" do
             :title => headline.title,
           },
           :translation => "これは翻訳です",
-          :translator => FactoryGirl.create(:account)
+          :account => FactoryGirl.create(:account)
         }
       end
 
@@ -99,7 +99,7 @@ describe "Headline Model" do
             :title => @existing_headline.title,
           },
           :translation => "これは翻訳です",
-          :translator => FactoryGirl.create(:account)
+          :account => FactoryGirl.create(:account)
         }
       end
 

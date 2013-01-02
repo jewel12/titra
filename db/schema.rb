@@ -29,10 +29,10 @@ ActiveRecord::Schema.define(:version => 4) do
 
   create_table "title_translations", :force => true do |t|
     t.integer  "headline_id"
-    t.integer  "translator_id"
+    t.integer  "account_id"
     t.text     "title"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
 end

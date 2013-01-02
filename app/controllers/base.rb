@@ -10,6 +10,7 @@ Titra.controllers do
   end
 
   get :profile do
+    @account = current_account
     render 'profile'
   end
 

@@ -18,7 +18,7 @@ describe "TitleTranslation Model" do
     title_new = FactoryGirl.build(:human_translated_title_translation,
                                   :title => "title_new",
                                   :headline => title_old.headline,
-                                  :translator => title_old.translator)
+                                  :account => title_old.account)
     title_new.should be_invalid
   end
 
@@ -42,14 +42,14 @@ describe "TitleTranslation Model" do
 
   describe ".create_or_update" do
     before(:each) do
-      @translator = FactoryGirl.create(:account)
+      @account = FactoryGirl.create(:account)
       @headline = FactoryGirl.create(:headline)
     end
 
     it "新規に登録できる" do
       lambda{
         TitleTranslation.create_or_update(:title => 'Ruby',
-                                          :translator => @translator,
+                                          :account => @account,
                                           :headline => @headline)
       }.should change(TitleTranslation, :count).by(1)
     end
@@ -62,7 +62,7 @@ describe "TitleTranslation Model" do
       TitleTranslation.find(translated_title.id).title.should == old_title
 
       TitleTranslation.create_or_update(:title => new_title,
-                                        :translator => translated_title.translator,
+                                        :account => translated_title.account,
                                         :headline => translated_title.headline)
 
       TitleTranslation.find(translated_title.id).title.should == new_title
