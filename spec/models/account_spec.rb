@@ -36,4 +36,16 @@ describe "Account Model" do
   describe ".provider" do
     it_behaves_like "a valid string", :name
   end
+
+  describe ".title_translations" do
+    before do
+      @account = FactoryGirl.create(:account)
+      3.times { FactoryGirl.create(:title_translation, :account => @account) }
+    end
+
+    it "3つ翻訳を持っている" do
+      @account.title_translations.should have(3).items
+      FactoryGirl.create(:account).title_translations.should be_empty
+    end
+  end
 end

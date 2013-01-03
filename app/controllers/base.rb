@@ -9,4 +9,9 @@ Titra.controllers do
     redirect url_for(:headlines, :index)
   end
 
+  get :profile do
+    @account = current_account
+    render 'profile'
+  end
+
 end

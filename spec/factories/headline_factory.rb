@@ -1,7 +1,6 @@
 FactoryGirl.define do
   factory :headline do
     title "Ruby is good!"
-    is_translated false
     sequence(:url) { |i| "http://ruby-example#{i}.com/" }
 
     factory :headline_with_translations do
