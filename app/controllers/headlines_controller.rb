@@ -25,8 +25,8 @@ Titra.controllers :headlines do
   post :create do
     redirect url(:login) unless logged_in?
 
-    params[:translator] = current_account
-    Headline.create_with_translation(params)
+    params[:translation][:translator] = current_account
+    Headline.create_with_translation(params[:headline], params[:translation])
 
     redirect url_for(:headlines, :index)
   end

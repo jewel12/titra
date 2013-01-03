@@ -9,7 +9,10 @@
         %td.content= f.text_field :url, :value => @url || ""
       %tr
         %td.label= label_tag :translation, :caption => "タイトルの翻訳"
-        %td.content= text_area_tag :translation, :id => "translation"
+        %td.content= text_area_tag 'translation[title]', :id => "translation"
+      %tr
+        %td.label= label_tag :summary, :caption => "要約やメモ"
+        %td.content= text_area_tag 'translation[summary]', :id => "summary"
     %p= f.submit "投稿", :class => 'button'
 =javascript_include_tag 'jquery.js'
 =javascript_include_tag 'jquery.autosize-min.js'

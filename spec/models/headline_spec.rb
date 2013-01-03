@@ -71,20 +71,22 @@ describe "Headline Model" do
             :url => headline.url,
             :title => headline.title,
           },
-          :translation => "これは翻訳です",
-          :translator => FactoryGirl.create(:translator)
+          :translation => {
+            :title => "これは翻訳です",
+            :translator => FactoryGirl.create(:translator)
+          }
         }
       end
 
       it "Headlineの数は増加していること" do
         lambda {
-          Headline.create_with_translation(@params)
+          Headline.create_with_translation(@params[:headline], @params[:translation])
         }.should change(Headline, :count).by(1)
       end
 
       it "Translationsの数は増加していること" do
         lambda {
-          headline = Headline.create_with_translation(@params)
+          Headline.create_with_translation(@params[:headline], @params[:translation])
         }.should change(Translation, :count).by(1)
       end
     end
@@ -98,26 +100,25 @@ describe "Headline Model" do
             :url => @existing_headline.url,
             :title => @existing_headline.title,
           },
-          :translation => "これは翻訳です",
-          :translator => FactoryGirl.create(:translator)
+          :translation => {
+            :title => "これは翻訳です",
+            :translator => FactoryGirl.create(:translator)
+          }
         }
       end
 
       it "Headlineの数は変化しないこと" do
         lambda {
-          Headline.create_with_translation(@params)
+          Headline.create_with_translation(@params[:headline], @params[:translation])
         }.should_not change(Headline, :count)
       end
 
       it "作成したheadline_idを持つTranslationsの数は増加していること" do
         counter = lambda { Translation.where(:headline_id => @existing_headline.id).all.count }
         lambda {
-          headline = Headline.create_with_translation(@params)
+          Headline.create_with_translation(@params[:headline], @params[:translation])
         }.should change(counter, :call).by(1)
       end
     end
-
   end
-
-
 end

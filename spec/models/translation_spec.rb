@@ -1,6 +1,20 @@
 # -*- coding: utf-8 -*-
 require 'spec_helper'
 
+shared_examples_for "a valid string" do |param_name|
+  it "空白のみの内容は無効" do
+    FactoryGirl.build(:translation, param_name => ' ').should be_invalid
+    FactoryGirl.build(:translation, param_name => '　').should be_invalid
+    FactoryGirl.build(:translation, param_name => '　 ').should be_invalid
+  end
+
+  it "空白を含んだ文字列は有効" do
+    FactoryGirl.build(:translation, param_name => 'Ruby is good').should be_valid
+    FactoryGirl.build(:translation, param_name => 'Ruby　is good').should be_valid
+    FactoryGirl.build(:translation, param_name => ' Ruby　is  good').should be_valid
+  end
+end
+
 describe "Translation Model" do
   let(:translation) { Translation.new }
   it 'can be created' do
@@ -22,22 +36,16 @@ describe "Translation Model" do
     title_new.should be_invalid
   end
 
-  context "翻訳されたタイトルを検証するとき" do
-    it "空文字は無効" do
+  describe ".title" do
+    it "空では登録できない" do
       FactoryGirl.build(:translation, :title => '').should be_invalid
     end
 
-    it "空白のみの内容は無効" do
-      FactoryGirl.build(:translation, :title => ' ').should be_invalid
-      FactoryGirl.build(:translation, :title => '　').should be_invalid
-      FactoryGirl.build(:translation, :title => '　 ').should be_invalid
-    end
+    it_behaves_like "a valid string", :title
+  end
 
-    it "空白を含んだ文字列は有効" do
-      FactoryGirl.build(:translation, :title => 'Ruby はいい').should be_valid
-      FactoryGirl.build(:translation, :title => 'Ruby　はいい').should be_valid
-      FactoryGirl.build(:translation, :title => ' Ruby　はいい').should be_valid
-    end
+  describe ".summary" do
+    it_behaves_like "a valid string", :summary
   end
 
   describe ".create_or_update" do
