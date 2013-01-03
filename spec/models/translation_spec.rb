@@ -36,7 +36,7 @@ describe "Translation Model" do
     title_new.should be_invalid
   end
 
-  describe ".title" do
+  describe "#title" do
     it "空では登録できない" do
       FactoryGirl.build(:translation, :title => '').should be_invalid
     end
