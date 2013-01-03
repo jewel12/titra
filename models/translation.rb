@@ -8,8 +8,7 @@ class Translation < ActiveRecord::Base
   def self.create_or_update(params)
     t = where(:headline_id => params[:headline].id,
               :translator_id => params[:translator].id).first_or_create
-    t.title = params[:title]
-    t.save!
+    t.update_attributes(params)
     return t
   end
 end
