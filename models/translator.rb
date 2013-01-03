@@ -1,6 +1,6 @@
 require "yaml"
-class Account < ActiveRecord::Base
-  has_many :title_translations
+class Translator < ActiveRecord::Base
+  has_many :translations
 
   [:name, :uid, :provider].each do |param|
     validates param, :presence => true, :space => true

@@ -12,14 +12,6 @@
 
 ActiveRecord::Schema.define(:version => 4) do
 
-  create_table "accounts", :force => true do |t|
-    t.string   "name"
-    t.string   "uid"
-    t.string   "provider"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
   create_table "headlines", :force => true do |t|
     t.string   "title"
     t.text     "url"
@@ -27,12 +19,21 @@ ActiveRecord::Schema.define(:version => 4) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "title_translations", :force => true do |t|
+  create_table "translations", :force => true do |t|
     t.integer  "headline_id"
-    t.integer  "account_id"
+    t.integer  "translator_id"
     t.text     "title"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.text     "summary"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  create_table "translators", :force => true do |t|
+    t.string   "name"
+    t.string   "uid"
+    t.string   "provider"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
 end

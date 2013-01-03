@@ -8,6 +8,8 @@ class Titra < Padrino::Application
 
   enable :sessions
 
+  set :admin_model, 'Translator'
+
   use OmniAuth::Builder do
     provider :github, ENV['GH_APP_ID'], ENV['GH_APP_SECRET']
     provider :twitter, ENV['TW_APP_ID'], ENV['TW_APP_SECRET']

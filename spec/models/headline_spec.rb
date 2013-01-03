@@ -22,7 +22,7 @@ describe "Headline Model" do
     let(:headline_with_translations) { FactoryGirl.create(:headline_with_translations) }
 
     describe "#translations" do
-      subject { headline_with_translations.title_translations }
+      subject { headline_with_translations.translations }
       it { should have(2).items }
     end
   end
@@ -72,20 +72,20 @@ describe "Headline Model" do
             :title => headline.title,
           },
           :translation => "これは翻訳です",
-          :account => FactoryGirl.create(:account)
+          :translator => FactoryGirl.create(:translator)
         }
       end
 
       it "Headlineの数は増加していること" do
         lambda {
-          Headline.create_with_title_translation(@params)
+          Headline.create_with_translation(@params)
         }.should change(Headline, :count).by(1)
       end
 
-      it "TitleTranslationsの数は増加していること" do
+      it "Translationsの数は増加していること" do
         lambda {
-          headline = Headline.create_with_title_translation(@params)
-        }.should change(TitleTranslation, :count).by(1)
+          headline = Headline.create_with_translation(@params)
+        }.should change(Translation, :count).by(1)
       end
     end
 
@@ -99,20 +99,20 @@ describe "Headline Model" do
             :title => @existing_headline.title,
           },
           :translation => "これは翻訳です",
-          :account => FactoryGirl.create(:account)
+          :translator => FactoryGirl.create(:translator)
         }
       end
 
       it "Headlineの数は変化しないこと" do
         lambda {
-          Headline.create_with_title_translation(@params)
+          Headline.create_with_translation(@params)
         }.should_not change(Headline, :count)
       end
 
-      it "作成したheadline_idを持つTitleTranslationsの数は増加していること" do
-        counter = lambda { TitleTranslation.where(:headline_id => @existing_headline.id).all.count }
+      it "作成したheadline_idを持つTranslationsの数は増加していること" do
+        counter = lambda { Translation.where(:headline_id => @existing_headline.id).all.count }
         lambda {
-          headline = Headline.create_with_title_translation(@params)
+          headline = Headline.create_with_translation(@params)
         }.should change(counter, :call).by(1)
       end
     end

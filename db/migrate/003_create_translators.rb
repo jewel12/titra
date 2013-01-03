@@ -1,6 +1,6 @@
-class CreateAccounts < ActiveRecord::Migration
+class CreateTranslators < ActiveRecord::Migration
   def self.up
-    create_table :accounts do |t|
+    create_table :translators do |t|
       t.string :name
       t.string :uid
       t.string :provider
@@ -9,6 +9,6 @@ class CreateAccounts < ActiveRecord::Migration
   end
 
   def self.down
-    drop_table :accounts
+    drop_table :translators
   end
 end

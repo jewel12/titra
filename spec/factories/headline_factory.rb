@@ -4,7 +4,7 @@ FactoryGirl.define do
     sequence(:url) { |i| "http://ruby-example#{i}.com/" }
 
     factory :headline_with_translations do
-      title_translations {FactoryGirl.create_list(:title_translation, 2)}
+      translations {FactoryGirl.create_list(:translation, 2)}
     end
   end
 end

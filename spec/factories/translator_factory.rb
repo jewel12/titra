@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :account do
+  factory :translator do
     name "Yamada"
     uid "123456"
     provider "github"

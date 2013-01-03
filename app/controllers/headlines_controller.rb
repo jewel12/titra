@@ -11,7 +11,7 @@ Titra.controllers :headlines do
 
   get :show, :with => :id do
     @headline = Headline.find(params[:id].to_i)
-    @translations = @headline.title_translations
+    @translations = @headline.translations
     render 'headlines/show'
   end
 
@@ -25,9 +25,8 @@ Titra.controllers :headlines do
   post :create do
     redirect url(:login) unless logged_in?
 
-    params[:account] = current_account
-
-    Headline.create_with_title_translation(params)
+    params[:translator] = current_account
+    Headline.create_with_translation(params)
 
     redirect url_for(:headlines, :index)
   end
