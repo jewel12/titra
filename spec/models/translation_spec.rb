@@ -44,7 +44,7 @@ describe "Translation Model" do
     it_behaves_like "a valid string", :title
   end
 
-  describe ".summary" do
+  describe "#summary" do
     it_behaves_like "a valid string", :summary
   end
 
