@@ -25,19 +25,19 @@ describe "Translator Model" do
     translator.should_not be_nil
   end
 
-  describe ".name" do
+  describe "#name" do
     it_behaves_like "a valid string", :name
   end
 
-  describe ".uid" do
+  describe "#uid" do
     it_behaves_like "a valid string", :name
   end
 
-  describe ".provider" do
+  describe "#provider" do
     it_behaves_like "a valid string", :name
   end
 
-  describe ".title_translations" do
+  describe "#translations" do
     before do
       @translator = FactoryGirl.create(:translator)
       3.times { FactoryGirl.create(:translation, :translator => @translator) }
