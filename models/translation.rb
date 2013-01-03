@@ -12,12 +12,4 @@ class Translation < ActiveRecord::Base
     t.save!
     return t
   end
-
-  def self.create_with_translator(translator, params)
-    create! do |translation|
-      translation.title = params[:title]
-      translation.headline_id = params[:headline_id]
-      translation.translator = translator
-    end
-  end
 end
