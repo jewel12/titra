@@ -1,1 +1,17 @@
-%p 翻訳数: #{@translator.translations.count}
+#profile_header
+  %table#profile
+    %tr
+      %td#profile_name #{@translator.name}さんの要約
+      %td#translation_num
+        #translation_num_box
+          %p#title 要約数
+          %p#num= @translator.translations.count
+      %td#post= button_tag "要約を追加", :onClick => "location.href='headlines/new'"
+#translations
+- @translator.translations.map{ |t| [t.headline, t] }.each do |headline, translation|
+  .translation
+    %p.title
+      %span.translated_title= link_to html_escape(translation.title), html_escape(headline.url)
+      %span.detail= link_to '詳細', url_for(:headlines, :show, :id => headline.id)
+    %p
+      %span.original_title= html_escape(headline.title)

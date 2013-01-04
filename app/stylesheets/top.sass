@@ -1,6 +1,13 @@
 @import compass
 
 //
+// Colors
+//
+
+$aka: #ED0404
+$midori: #028E8E
+
+//
 // Mix-in
 //
 
@@ -9,12 +16,21 @@
     left: auto
     right: auto
 
-//
-// Colors
-//
+@mixin midori-button
+  color: white
+  background-color: $midori
+  border: none
+    width: 100%
+    height: 100%
+  font:
+    size: 20px
+    weight: bold
+  &:hover
+    background-color: #2F6F2F
 
-$aka: #ED0404
-$midori: #028E8E
+@mixin header-bottom-line
+  @include box-shadow(rgba(0,0,0,0.1) 0 2px 0)
+  border-bottom: 1px solid rgba(0,0,0,0.2)
 
 body
   font-family: 'ヒラギノ角ゴ Pro W3','Hiragino Kaku Gothic Pro','メイリオ',Meiryo,'ＭＳ Ｐゴシック',sans-serif
@@ -40,8 +56,7 @@ div#main
   @include single-box-shadow
 
 div#header
-  @include box-shadow(rgba(0,0,0,0.1) 0 2px 0)
-  border-bottom: 1px solid rgba(0,0,0,0.2)
+  @include header-bottom-line
   padding-bottom: 10px
   width: 100%
   div#title
@@ -76,6 +91,8 @@ div#header
 div#content
   width: 100%
   padding: 5px
+
+div#translations
   padding-top: 10px
 
 div.translation
@@ -164,13 +181,43 @@ div#form
   p
     padding-top: 20px
   input.button
-    color: white
-    font:
-      size: 20px
-      weight: bold
-    border: solid 1px gray
+    @include midori-button
     padding: 5px 40px
+
+//
+// Profile
+//
+div#profile_header
+  @include header-bottom-line
+  padding:
+    top: 10px
+    bottom: 10px
+
+table#profile
+  width: 100%
+  text-align: center
+  font-weight: bold
+  margin-bottom: 5px
+  td#profile_name
+    @include single-text-shadow
+    color: #003C3C
+    width: 60%
+    text-align: center
+    font-size: 23px
+  td#translation_num
+    color: white
     background-color: $midori
-    text-shadow: 1px -1px rgba(0,0,0,0.5)
-  input.button:hover
-    @include box-shadow(rgba(0,0,0,0.2) 0 0 0 2px inset)
+    width: 20%
+    p#title
+      padding-top: 3px
+      font-size: 15px
+    p#num
+      font-size: 30px
+  td#post
+    padding: 0
+    input
+      @include midori-button
+      color: yellow
+      padding: 0
+      width: 100%
+      height: 100%
