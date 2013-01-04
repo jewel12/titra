@@ -13,9 +13,7 @@ class Translator < ActiveRecord::Base
     t = Translation.where(:headline_id => h.id, :translator_id => self.id).first_or_create
     t.update_attributes(translation_params)
 
-    h.save
-
-    return h
+    return h, t
   end
 
   def self.create_with_omniauth(auth)
