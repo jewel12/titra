@@ -12,11 +12,18 @@ gem 'sinatra-flash', :require => 'sinatra/flash'
 gem 'compass'
 gem 'haml'
 gem 'activerecord', :require => "active_record"
-gem 'sqlite3'
 gem 'omniauth'
 gem 'omniauth-github'
 gem 'omniauth-twitter'
 gem 'kaminari', :require => 'kaminari/sinatra'
+
+group :production do
+  gem 'pg'
+end
+
+group :development, :test do
+  gem 'sqlite3'
+end
 
 # Test requirements
 group :test do
