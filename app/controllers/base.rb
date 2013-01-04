@@ -1,6 +1,7 @@
 Titra.controllers do
 
   get :login do
+    redirect url(:profile) if logged_in?
     render 'login'
   end
 
