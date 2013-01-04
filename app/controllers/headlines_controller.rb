@@ -30,7 +30,7 @@ Titra.controllers :headlines do
     if @headline.valid?
       redirect url_for(:headlines, :index)
     else
-      render 'headlines/new'
+      redirect url_for(:headlines, :new)
     end
   end
 end
