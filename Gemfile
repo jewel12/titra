@@ -16,6 +16,7 @@ gem 'sqlite3'
 gem 'omniauth'
 gem 'omniauth-github'
 gem 'omniauth-twitter'
+gem 'kaminari', :require => 'kaminari/sinatra'
 
 # Test requirements
 group :test do

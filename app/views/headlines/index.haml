@@ -13,4 +13,5 @@
       .tr_summary
         - unless translation.summary.blank?
           %p.summary= html_escape(translation.summary)
+%p= paginate @headlines
 =javascript_include_tag 'jquery.js', 'application.js'
