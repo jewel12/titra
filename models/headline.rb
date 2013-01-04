@@ -5,6 +5,8 @@ class Headline < ActiveRecord::Base
   validates :url, :uniqueness => true, :format => URI.regexp(%w[http https])
   validates :title, :presence => true, :space => true
 
+  attr_accessible :url, :title
+
   scope :latest_order, order('updated_at desc')
 
   # Todo: 現在は登録順で最も新しいものを取得しているが、実際はスコア等で並び替えが行われる
