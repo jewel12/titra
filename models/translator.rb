@@ -5,6 +5,18 @@ class Translator < ActiveRecord::Base
     validates param, :presence => true, :space => true
   end
 
+  def self.create_with_omniauth(auth)
+    create! do |account|
+      account.name = auth["info"].nickname
+      account.provider = auth["provider"]
+      account.uid = auth["uid"]
+    end
+  end
+
+  def latest_order_translations
+    translations.order('updated_at desc').all
+  end
+
   def translate_headline(headline_params, translation_params)
     h = Headline.where(:url => headline_params[:url]).first_or_create
     h.update_attributes(headline_params)
@@ -15,11 +27,4 @@ class Translator < ActiveRecord::Base
     return h, t
   end
 
-  def self.create_with_omniauth(auth)
-    create! do |account|
-      account.name = auth["info"].nickname
-      account.provider = auth["provider"]
-      account.uid = auth["uid"]
-    end
-  end
 end
