@@ -63,10 +63,10 @@ h3
 
 div#main
   @include block-center
-  width: 80%
-  padding: 10px
   @include background-image(linear-gradient(lighten(#F7F7F7, 50%), #F7F7F7))
   @include single-box-shadow
+  width: 80%
+  padding: 10px
 
 div#header
   @include header-bottom-line
@@ -93,7 +93,6 @@ div#header
         color: $midori
       a#logout
         color: gray
-
   div#info
     @include single-text-shadow
     text-align: center
@@ -106,28 +105,47 @@ div#header
 
 div#content
   width: 100%
-  padding: 5px
 
 div#translations
   padding-top: 10px
+  width: 100%
 
 div.translation
-  margin-bottom: 5px
+  padding:
+    top: 2px
+    bottom: 2px
+  width: 100%
+  &:hover
+    background-color: #FDE5D1
+  div.title, div.tr_info
+    width: 100%
+  div.tr_info
+    @include clearfix
+    div.tr_info_left
+      @include float-left
+    div.tr_info_right
+      text-align: right
+  div.tr_summary
+    @include box-shadow(rgba(0,0,0,0.1) 0 2px 0)
+    background-color: white
+    padding-left: 5px
+    margin: 3px
   span.translated_title
     a
+      @include single-text-shadow
       color: #632D00
       font:
         weight: bold
         size: 15px
       text-decoration: none
-      @include single-text-shadow
-  span.translator, span.original_title, span.detail
+  span.translator, span.original_title, span.detail, span.summary_info
     font-size: 10px
   span.original_title
     color: #ED6D04
-  span.detail
-    a
-      color: #235353
+  span.summary_info
+    text-decoration: underline
+    padding: 2px
+    color: $aka
 
 //
 // Login Selecting
