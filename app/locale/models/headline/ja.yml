@@ -4,7 +4,7 @@ ja:
       name: 翻訳したい記事
       attributes:
         id: Id
-        title: タイトル
+        title: 記事のタイトル
         url: URL
         created_at: Created at
         updated_at: Updated at
