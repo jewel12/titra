@@ -11,7 +11,7 @@
   - @headline_translation_pairs.each do |headline, translation|
     .translation
       .title
-        %span.translated_title= link_to html_escape(translation.title), html_escape(headline.url)
+        %span.translated_title= link_to html_escape(translation.title), html_escape(headline.url), :target => '_blank'
       .tr_info
         .tr_info_left
           %span.original_title= html_escape(headline.title)
