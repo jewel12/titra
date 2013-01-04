@@ -17,20 +17,33 @@ Titra.controllers :headlines do
 
   get :new do
     redirect url(:login) unless logged_in?
-    @url = params["url"]
-    @title = params["title"]
+
+    @headline = session.delete(:headline)
+    @translation = session.delete(:translation)
+
+    param_initializer = lambda { |sym|
+      return params[sym] if params[sym]
+      return @headline.send(sym) if @headline
+      return ''
+    }
+    @title, @url = [:title, :url].map(&param_initializer)
+
     render 'headlines/new'
   end
 
   post :create do
     redirect url(:login) unless logged_in?
 
-    @headline = current_account.translate_headline(params[:headline], params[:translation])
+    @headline, @translation = current_account.translate_headline(params[:headline], params[:translation])
 
-    if @headline.valid?
+    if @headline.valid? && @translation.valid?
       redirect url_for(:headlines, :index)
     else
-      render 'headlines/new'
+      session[:headline] = @headline
+      session[:translation] = @translation
+      redirection_url = url_for(:headlines, :new)
+      redirection_url += "?from_profile=true" if params["from_profile"]
+      redirect redirection_url
     end
   end
 end

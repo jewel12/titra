@@ -1,0 +1,12 @@
+ja:
+  models:
+    translation:
+      name: 翻訳
+      attributes:
+        id: Id
+        headline_id: 翻訳したい記事
+        translator_id: 翻訳
+        title: タイトルの翻訳
+        summary: 要約
+        created_at: Created at
+        updated_at: Updated at

@@ -1,13 +1,20 @@
 #form
-  - form_for :headline, '/headlines/create', :id => "new_form" do |f|
-    %p= f.error_messages
+  - form_for :headline, '/headlines/create', :id => "new_form", :format => :ja do |f|
+    - if @headline
+      #errors
+        - @headline.errors.each do |attr,message|
+          %p= I18n.t(attr, :scope => [:models, :headline, :attributes]) + message
+        - if @translation && @translation.invalid?
+          %p タイトルの翻訳を入力してください
+    - if params["from_profile"]
+      = hidden_field_tag "from_profile", :value => true
     %table
       %tr
         %td.label= f.label :title, :caption => "タイトル"
-        %td.content= f.text_area :title, :value => @title || ""
+        %td.content= f.text_area :title, :value => @title
       %tr
         %td.label= f.label :url, :caption => "URL"
-        %td.content= f.text_field :url, :value => @url || ""
+        %td.content= f.text_field :url, :value => @url
       %tr
         %td.label= label_tag :translation, :caption => "タイトルの翻訳"
         %td.content= text_area_tag 'translation[title]', :id => "translation"

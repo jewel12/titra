@@ -1,0 +1,7 @@
+ja:
+  activemodel: &activemodel
+    errors:
+      messages:
+        blank: "が空欄です"
+        invalid: "が正しくありません"
+  activerecord: *activemodel
