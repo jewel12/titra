@@ -23,8 +23,8 @@ postgres = URI.parse(ENV['DATABASE_URL'] || '')
 ActiveRecord::Base.configurations[:production] = {
   :adapter  => 'postgresql',
   :encoding => 'utf8',
-  :database => postgres.user,
-  :username => postgres.path.sub(/^\//, ''),
+  :username => postgres.user,
+  :database => postgres.path.sub(/^\//, ''),
   :password => postgres.password,
   :host     => postgres.host
 }
