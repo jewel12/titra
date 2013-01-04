@@ -1,1 +1,15 @@
-%p 翻訳数: #{@translator.translations.count}
+%table
+  %tr
+    %td #{@translator.name} さんの翻訳
+    %td
+      %p 翻訳数
+      %p= @translator.translations.count
+    %td= link_to "logout", url(:logout)
+#translations
+- @translator.translations.map{ |t| [t.headline, t] }.each do |headline, translation|
+  .translation
+    %p.title
+      %span.translated_title= link_to html_escape(translation.title), html_escape(headline.url)
+      %span.detail= link_to '詳細', url_for(:headlines, :show, :id => headline.id)
+    %p
+      %span.original_title= html_escape(headline.title)
