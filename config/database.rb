@@ -24,7 +24,7 @@ ActiveRecord::Base.configurations[:production] = {
   :adapter  => 'postgresql',
   :encoding => 'utf8',
   :database => postgres.user,
-  :username => postgres.user,
+  :username => postgres.path.sub(/^\//, ''),
   :password => postgres.password,
   :host     => postgres.host
 }
