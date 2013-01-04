@@ -1,4 +1,3 @@
-require "yaml"
 class Translator < ActiveRecord::Base
   has_many :translations
 
