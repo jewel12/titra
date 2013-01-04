@@ -12,6 +12,5 @@
   .translation
     %p.title
       %span.translated_title= link_to html_escape(translation.title), html_escape(headline.url)
-      %span.detail= link_to '詳細', url_for(:headlines, :show, :id => headline.id)
     %p
       %span.original_title= html_escape(headline.title)
