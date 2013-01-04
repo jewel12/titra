@@ -32,6 +32,19 @@ $midori: #028E8E
   @include box-shadow(rgba(0,0,0,0.1) 0 2px 0)
   border-bottom: 1px solid rgba(0,0,0,0.2)
 
+@mixin login-button($color)
+  width: 100%
+  height: 100%
+  color: $aka
+  text-decoration: none
+  font:
+    weight: bold
+    size: 30px
+    family: Verdana, Arial, sans-serif
+  background-color: adjust-lightness($color, -10%)
+  &:hover
+    background-color: $color
+
 body
   font-family: 'ヒラギノ角ゴ Pro W3','Hiragino Kaku Gothic Pro','メイリオ',Meiryo,'ＭＳ Ｐゴシック',sans-serif
   background:
@@ -119,31 +132,28 @@ div.translation
 //
 // Login Selecting
 //
+
 div#login_select
   text-align: center
   width: 80%
+  height: 80px
   @include block-center
 
 div#github, div#twitter
-  @include single-box-shadow
-  padding: 5%
-  width: 40%
-  font:
-    size: 20px
-    family: Verdana, Arial, sans-serif
-  a
-    color: $aka
-    text-decoration: none
+  width: 50%
+  height: 100%
 
 div#github
   @include float-left
-  @include border-left-radius(10px)
-  background-color: #CEF9CE
+  input
+    @include login-button(#CEF9CE)
+    @include border-left-radius(10px)
 
 div#twitter
   @include clearfix
-  @include border-right-radius(10px)
-  background-color: #CBF5F5
+  input
+    @include login-button(#CBF5F5)
+    @include border-right-radius(10px)
 
 //
 // Form
