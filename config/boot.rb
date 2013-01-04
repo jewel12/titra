@@ -35,6 +35,7 @@ Bundler.require(:default, PADRINO_ENV)
 # Add your before (RE)load hooks here
 #
 Padrino.before_load do
+  I18n.locale = :ja
   Encoding.default_internal = nil
   Encoding.default_external = 'UTF-8'
 end
