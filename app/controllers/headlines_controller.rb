@@ -1,6 +1,6 @@
 Titra.controllers :headlines do
   get :index, :map => '/' do
-    @headlines_with_best_translation = Headline.get_with_best_translation
+    @headlines_with_best_translation = Headline.latest_order.get_with_best_translation
     render 'headlines/index'
   end
 
