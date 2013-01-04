@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 4) do
+ActiveRecord::Schema.define(:version => 6) do
 
   create_table "headlines", :force => true do |t|
     t.string   "title"
@@ -18,6 +18,8 @@ ActiveRecord::Schema.define(:version => 4) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  add_index "headlines", ["url"], :name => "index_headlines_on_url"
 
   create_table "translations", :force => true do |t|
     t.integer  "headline_id"
@@ -27,6 +29,9 @@ ActiveRecord::Schema.define(:version => 4) do
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
   end
+
+  add_index "translations", ["headline_id"], :name => "index_translations_on_headline_id"
+  add_index "translations", ["translator_id"], :name => "index_translations_on_translator_id"
 
   create_table "translators", :force => true do |t|
     t.string   "name"
