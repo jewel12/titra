@@ -6,7 +6,7 @@
         #translation_num_box
           %p#title 要約数
           %p#num= @translator.translations.count
-      %td#post= button_tag "要約を追加", :onClick => "location.href='headlines/new'"
+      %td#post= button_tag "要約を追加", :onClick => "location.href='headlines/new?from_profile=true'"
 #translations
 - @translator.translations.map{ |t| [t.headline, t] }.each do |headline, translation|
   .translation
