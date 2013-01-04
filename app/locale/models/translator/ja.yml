@@ -1,0 +1,11 @@
+ja:
+  models:
+    translator:
+      name: 翻訳者
+      attributes:
+        id: Id
+        name: 名前
+        uid: Uid
+        provider: Provider
+        created_at: Created at
+        updated_at: Updated at

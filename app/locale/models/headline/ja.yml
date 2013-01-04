@@ -1,0 +1,10 @@
+ja:
+  models:
+    headline:
+      name: 翻訳したい記事
+      attributes:
+        id: Id
+        title: タイトル
+        url: URL
+        created_at: Created at
+        updated_at: Updated at
