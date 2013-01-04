@@ -1,6 +1,11 @@
 #form
   - form_for :headline, '/headlines/create', :id => "new_form", :format => :ja do |f|
-    %p= error_messages_for(:headline, :translation)
+    - if @headline
+      #errors
+        - @headline.errors.each do |attr,message|
+          %p= I18n.t(attr, :scope => [:models, :headline, :attributes]) + message
+        - if @translation && @translation.invalid?
+          %p タイトルの翻訳を入力してください
     - if params["from_profile"]
       = hidden_field_tag "from_profile", :value => true
     %table
