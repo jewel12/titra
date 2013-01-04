@@ -1,10 +1,12 @@
-%table
-  %tr
-    %td #{@translator.name} さんの翻訳
-    %td
-      %p 翻訳数
-      %p= @translator.translations.count
-    %td= link_to "logout", url(:logout)
+#profile_header
+  %table#profile
+    %tr
+      %td#profile_name #{@translator.name}さんの要約
+      %td#translation_num
+        #translation_num_box
+          %p#title 要約数
+          %p#num= @translator.translations.count
+      %td#post= button_tag "要約を追加", :onClick => "location.href='headlines/new'"
 #translations
 - @translator.translations.map{ |t| [t.headline, t] }.each do |headline, translation|
   .translation
