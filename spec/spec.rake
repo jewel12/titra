@@ -1,4 +1,7 @@
-require 'rspec/core/rake_task'
+begin
+  require 'rspec/core/rake_task'
+rescue LoadError
+end
 
 spec_tasks = Dir['spec/*/'].map { |d| File.basename(d) }
 
