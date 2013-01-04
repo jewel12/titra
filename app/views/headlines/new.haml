@@ -1,5 +1,6 @@
 #form
   - form_for :headline, '/headlines/create', :id => "new_form" do |f|
+    %p= f.error_messages
     %table
       %tr
         %td.label= f.label :title, :caption => "タイトル"

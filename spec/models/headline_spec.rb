@@ -61,63 +61,41 @@ describe "Headline Model" do
     end
   end
 
-  describe ".create_with_title_translation" do
-    context "HeadlineのURLがまだ登録されていない場合" do
+  describe ".first_or_initialize_by_url" do
+    context "Headlinesに存在しないURLだった場合" do
       before(:each) do
-        FactoryGirl.create(:headline) # 2回呼んでおく
-        headline = FactoryGirl.build(:headline)
-        @params = {
-          :headline => {
-            :url => headline.url,
-            :title => headline.title,
-          },
-          :translation => {
-            :title => "これは翻訳です",
-            :translator => FactoryGirl.create(:translator)
-          }
-        }
+        f = FactoryGirl.build(:headline)
+        @headline = Headline.first_or_initialize_by_url({ :title => f.title, :url => f.url })
       end
 
-      it "Headlineの数は増加していること" do
-        lambda {
-          Headline.create_with_translation(@params[:headline], @params[:translation])
-        }.should change(Headline, :count).by(1)
+      it "保存できる" do
+        @headline.save.should be_true
       end
 
-      it "Translationsの数は増加していること" do
-        lambda {
-          Headline.create_with_translation(@params[:headline], @params[:translation])
-        }.should change(Translation, :count).by(1)
+      it "Headlinesに新しく登録される" do
+        lambda{ @headline.save }.should change(Headline, :count).by(1)
       end
     end
 
-    context "HeadlineのURLが既に登録されている場合" do
+    context "Headlinesに既に存在するURLだった場合" do
       before(:each) do
-        FactoryGirl.create(:headline) # 2回呼んでおく
-        @existing_headline = FactoryGirl.create(:headline)
-        @params = {
-          :headline => {
-            :url => @existing_headline.url,
-            :title => @existing_headline.title,
-          },
-          :translation => {
-            :title => "これは翻訳です",
-            :translator => FactoryGirl.create(:translator)
-          }
-        }
+        existing_headline = FactoryGirl.create(:headline)
+        url = existing_headline.url
+        @new_title = "updated_title"
+
+        @headline = Headline.first_or_initialize_by_url({ :title => @new_title, :url => url })
       end
 
-      it "Headlineの数は変化しないこと" do
-        lambda {
-          Headline.create_with_translation(@params[:headline], @params[:translation])
-        }.should_not change(Headline, :count)
+      it "保存できる" do
+        @headline.save.should be_true
       end
 
-      it "作成したheadline_idを持つTranslationsの数は増加していること" do
-        counter = lambda { Translation.where(:headline_id => @existing_headline.id).all.count }
-        lambda {
-          Headline.create_with_translation(@params[:headline], @params[:translation])
-        }.should change(counter, :call).by(1)
+      it "アップデートなのでHeadlineの総数は変化しない" do
+        lambda{ @headline.save }.should_not change(Headline, :count)
+      end
+
+      it "タイトルが更新されている" do
+        @headline.title.should == @new_title
       end
     end
   end

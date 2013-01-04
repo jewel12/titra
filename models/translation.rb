@@ -6,10 +6,15 @@ class Translation < ActiveRecord::Base
   validates :title, :presence => true, :space => true
   validates :summary, :space => true
 
+  def self.initialize_with_translator(params, translator)
+    translation = Translation.new(params)
+    translation.translator = translator
+    return translation
+  end
+
   def self.create_or_update(params)
     t = where(:headline_id => params[:headline].id,
               :translator_id => params[:translator].id).first_or_create
-    t.update_attributes(params)
-    return t
+    return t.update_attributes(params)
   end
 end

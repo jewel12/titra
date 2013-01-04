@@ -48,4 +48,77 @@ describe "Translator Model" do
       FactoryGirl.create(:translator).translations.should be_empty
     end
   end
+
+  describe "#tanslate_headline" do
+
+    context "翻訳対象のHeadlineが存在しない場合" do
+      before(:each) do
+        translator = FactoryGirl.create(:translator)
+        h = FactoryGirl.build(:headline)
+        t = FactoryGirl.build(:translation_without_headline)
+        h_param = { :url => h.url, :title => h.title }
+        t_param = { :title => t.title }
+        @save_proc = lambda{ translator.translate_headline(h_param, t_param).save! }
+      end
+
+      it "翻訳されたHeadlineを保存できる" do
+        lambda { @save_proc.call }.should_not raise_error
+      end
+
+      it "Headlineが１つ増加している" do
+        lambda { @save_proc.call }.should change(Headline, :count).by(1)
+      end
+
+      it "Translationが１つ増加している" do
+        lambda { @save_proc.call }.should change(Translation, :count).by(1)
+      end
+    end
+
+    context "翻訳対象のHeadlineが存在する場合" do
+      before(:each) do
+        translator = FactoryGirl.create(:translator)
+        h = FactoryGirl.create(:headline)
+        t = FactoryGirl.build(:translation_without_headline)
+        h_param = { :url => h.url, :title => h.title }
+        t_param = { :title => t.title }
+        @save_proc = lambda{ translator.translate_headline(h_param, t_param).save! }
+      end
+
+      it "翻訳されたHeadlineを保存できる" do
+        lambda { @save_proc.call }.should_not raise_error
+      end
+
+      it "Headlineの数は変化していない" do
+        lambda { @save_proc.call }.should_not change(Headline, :count)
+      end
+
+      it "Translationが１つ増加している" do
+        lambda { @save_proc.call }.should change(Translation, :count).by(1)
+      end
+    end
+
+    context "翻訳対象のHeadlineが存在し、Translatorの翻訳も既に存在する場合" do
+      before(:each) do
+        translator = FactoryGirl.create(:translator)
+        h = FactoryGirl.create(:headline)
+        t = FactoryGirl.create(:translation_without_headline, :headline => h, :translator => translator)
+        h_param = { :url => h.url, :title => h.title }
+        t_param = { :title => t.title }
+        @save_proc = lambda{ translator.translate_headline(h_param, t_param).save! }
+      end
+
+      it "翻訳されたHeadlineを保存できる" do
+        lambda { @save_proc.call }.should_not raise_error
+      end
+
+      it "Headlineの数は変化していない" do
+        lambda { @save_proc.call }.should_not change(Headline, :count)
+      end
+
+      it "Translationの数は変化していない" do
+        lambda { @save_proc.call }.should_not change(Translation, :count)
+      end
+    end
+
+  end
 end

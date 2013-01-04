@@ -13,14 +13,9 @@ class Headline < ActiveRecord::Base
     }.compact
   end
 
-  def self.create_with_translation(params, translation_params)
-    headline = Headline.where(:url => params[:url],
-                              :title => params[:title]).first_or_create
-
-    translation_params[:headline] = headline
-    Translation.create_or_update(translation_params)
-
+  def self.first_or_initialize_by_url(params)
+    headline = Headline.where(:url => params[:url]).first_or_initialize
+    headline.title = params[:title]
     return headline
   end
-
 end
