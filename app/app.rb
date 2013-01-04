@@ -5,6 +5,7 @@ class Titra < Padrino::Application
   register Padrino::Helpers
   register CompassInitializer
   register Padrino::Admin::AccessControl
+  register Kaminari::Helpers::SinatraHelpers
 
   enable :sessions
 
