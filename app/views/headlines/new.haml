@@ -30,6 +30,9 @@
     %p#bookmarklet_link= link_to "要約を登録", url('javascript:(function(){var url = location.href; var redirect_url = "'+ request.url.sub(/#{request.path}.*$/, '') +'/headlines/new?url=" + encodeURIComponent(url) + "&title=" + encodeURIComponent(document.title);window.open(redirect_url, "_blank"); })();')
     %p 2. 要約を投稿したいページでリンクボタンを押すと投稿ページに移動します。
     %p 3. タイトルやURLが既に記入されいるので、要約に専念できます！
-=javascript_include_tag 'jquery.js'
-=javascript_include_tag 'jquery.autosize-min.js'
-=javascript_include_tag 'application.js'
+=javascript_include_tag 'jquery.js', 'jquery.autosize-min.js'
+:javascript
+  $(document).ready(function(){
+    $('textarea').autosize();
+    #{'$("textarea#translation").focus();' unless params["from_profile"]}
+  });
