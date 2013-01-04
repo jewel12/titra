@@ -4,17 +4,6 @@ Titra.controllers :headlines do
     render 'headlines/index'
   end
 
-  get :old, :map => '/old' do
-    @headlines = Headline.all
-    render 'headlines/old_index'
-  end
-
-  get :show, :with => :id do
-    @headline = Headline.find(params[:id].to_i)
-    @translations = @headline.translations
-    render 'headlines/show'
-  end
-
   get :new do
     redirect url(:login) unless logged_in?
 
