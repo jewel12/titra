@@ -215,6 +215,25 @@ describe "Translator Model" do
       @translator.withdraw
       translation_ids.each { |id| Translation.where(:id => id).first.should be_nil }
     end
+
+    it "削除されたTranslationのみが紐付いているHeadlineは削除" do
+      headline = @translation1.headline
+      rel = Headline.where(:id => headline.id)
+      lambda { @translator.withdraw }.should change(rel, :count).from(1).to(0)
+    end
+
+    context "Headlineに削除されたTranslation以外にも紐付いているTranslationがあるとき" do
+      before(:each) do
+        headline = @translation1.headline
+        FactoryGirl.create(:translation, :headline_id => headline.id)
+      end
+
+      it "Headlineが削除されない" do
+        headline = @translation1.headline
+        rel = Headline.where(:id => headline.id)
+        lambda { @translator.withdraw }.should_not change(rel, :count)
+      end
+    end
   end
 
 end
