@@ -193,4 +193,28 @@ describe "Translator Model" do
     end
 
   end
+
+  describe "#withdraw" do
+    before(:each) do
+      headline = FactoryGirl.create(:headline)
+      @translation1 = FactoryGirl.create(:human_translated, :headline_id => headline.id)
+      @translation2 = FactoryGirl.create(:translation, :translator_id => @translation1.translator.id)
+      @translator = @translation1.translator
+    end
+
+    it "Translatorが削除される" do
+      id = @translator.id
+      Translator.where(:id => id).first.should_not be_nil
+      @translator.withdraw
+      Translator.where(:id => id).first.should be_nil
+    end
+
+    it "TranslatorのTranslationが削除されている" do
+      translation_ids = [@translation1, @translation2].map(&:id)
+      translation_ids.each { |id| Translation.where(:id => id).first.should_not be_nil }
+      @translator.withdraw
+      translation_ids.each { |id| Translation.where(:id => id).first.should be_nil }
+    end
+  end
+
 end

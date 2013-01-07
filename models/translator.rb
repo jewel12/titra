@@ -27,4 +27,8 @@ class Translator < ActiveRecord::Base
     return h, t
   end
 
+  def withdraw
+    self.translations.each(&:delete)
+    Translator.delete(self.id)
+  end
 end
