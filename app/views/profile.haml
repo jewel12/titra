@@ -21,4 +21,5 @@
       .tr_summary
         - unless translation.summary.blank?
           %p.summary= html_escape(translation.summary)
+#withdraw= link_to '鯛虎を退会する', url(:withdraw)
 =javascript_include_tag 'jquery.js', 'application.js'
