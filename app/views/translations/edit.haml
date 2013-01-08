@@ -1,15 +1,13 @@
 #form
   - form_for @translation, url_for(:translations, :edit, :id => @translation.id), :id => "edit_form" do |f|
-    #errors
-      - @translation.errors.each do |attr,message|
-        %p= I18n.t(attr, :scope => [:models, :translations, :attributes]) + message
+    - unless @translation.errors.empty?
+      #errors
+        %p タイトルの翻訳が空です。
     %table
       %tr
-        %td.label タイトル
-        %td.content= @translation.headline.title
-      %tr
-        %td.label URL
-        %td.content= @translation.headline.url
+        %td
+          %label タイトル
+        %td#headline_title= link_to html_escape(@translation.headline.title), html_escape(@translation.headline.url)
       %tr
         %td.label= label_tag :title, :caption => "タイトルの翻訳"
         %td.content= f.text_area :title, :value => @translation.title, :id => "translation"
