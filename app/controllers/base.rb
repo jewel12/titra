@@ -16,4 +16,9 @@ Titra.controllers do
     render 'profile'
   end
 
+  get :withdraw do
+    current_account.withdraw
+    redirect url_for(:headlines, :index)
+  end
+
 end

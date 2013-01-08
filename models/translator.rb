@@ -27,4 +27,13 @@ class Translator < ActiveRecord::Base
     return h, t
   end
 
+  def withdraw
+    self.translations.each do |t|
+      h = t.headline
+      t.delete
+      h.delete if h.translations.empty?
+    end
+
+    self.delete
+  end
 end
