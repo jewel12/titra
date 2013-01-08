@@ -27,7 +27,7 @@ Titra.controllers :headlines do
     @headline, @translation = current_account.translate_headline(params[:headline], params[:translation])
 
     if @headline.valid? && @translation.valid?
-      redirect url_for(:headlines, :index)
+      redirect url_for(:profile, :index)
     else
       session[:headline] = @headline
       session[:translation] = @translation
