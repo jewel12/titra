@@ -1,0 +1,23 @@
+#form
+  - form_for @translation, url_for(:translations, :edit, :id => @translation.id), :id => "edit_form" do |f|
+    - unless @translation.errors.empty?
+      #errors
+        %p タイトルの翻訳が空です。
+    %table
+      %tr
+        %td
+          %label タイトル
+        %td#headline_title= link_to html_escape(@translation.headline.title), html_escape(@translation.headline.url)
+      %tr
+        %td.label= label_tag :title, :caption => "タイトルの翻訳"
+        %td.content= f.text_area :title, :value => @translation.title, :id => "translation"
+      %tr
+        %td.label= label_tag :summary, :caption => "要約やメモ"
+        %td.content= f.text_area :summary, :value => @translation.summary, :id => "summary"
+    %p= f.submit "要約の編集", :class => 'button'
+=javascript_include_tag 'jquery.js', 'jquery.autosize-min.js'
+:javascript
+  $(document).ready(function(){
+    $('textarea').autosize();
+    #{'$("textarea#translation").focus();' unless params["from_profile"]}
+  });

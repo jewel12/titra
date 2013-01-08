@@ -12,6 +12,7 @@
     .translation
       .title
         %span.translated_title= link_to html_escape(translation.title), html_escape(headline.url), :target => '_blank'
+        %span.rewrite= link_to "編集", url_for(:translations, :edit, :id => translation.id)
       .tr_info
         .tr_info_left
           %span.original_title= html_escape(headline.title)

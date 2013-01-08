@@ -138,7 +138,7 @@ div.translation
         weight: bold
         size: 15px
       text-decoration: none
-  span.translator, span.original_title, span.detail, span.summary_info
+  span.translator, span.original_title, span.detail, span.summary_info, span.rewrite
     font-size: 10px
   span.original_title
     color: #ED6D04
@@ -146,6 +146,9 @@ div.translation
     text-decoration: underline
     padding: 2px
     color: $aka
+  span.rewrite
+    a
+      color: black
 
 //
 // Login Selecting
@@ -193,17 +196,18 @@ div#form
     input, textarea
       border: 1px solid rgba(0,0,0,0.1)
       width: 100%
-    textarea#headline_title
-      color: $aka
+    #headline_title
       font:
         size: 20px
         weight: bold
-    input#headline_url
+      a
+        color: $aka
+    #headline_url
       font:
         size: 10px
       height: 15px
       color: gray
-    textarea#translation
+    #translation
       font:
         size: 20px
         weight: bold
