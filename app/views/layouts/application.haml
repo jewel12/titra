@@ -14,7 +14,7 @@
             %span Web Title Translation
           #right
             - if logged_in?
-              %span= link_to 'マイページ', url(:profile)
+              %span= link_to 'マイページ', url_for(:profile, :index)
               %span= link_to 'ログアウト', url(:logout), :id => 'logout'
             - else
               %span= link_to 'ログイン', url(:login)

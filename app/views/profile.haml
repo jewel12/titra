@@ -26,6 +26,6 @@
 :javascript
   $(document).ready(function(){
     $('div#withdraw').click(function(){
-    if(window.confirm("鯛虎を退会しますか？")){ location.href = "#{url(:withdraw)}"; }
+    if(window.confirm("鯛虎を退会しますか？")){ location.href = "#{url_for(:profile, :withdraw)}"; }
     });
   });
