@@ -1,5 +1,5 @@
 #form
-  - form_for @translation, url_for(:translations, :edit, :id => @translation.id), :id => "edit_form" do |f|
+  - form_for @translation, url_for(:translations, :update, :id => @translation.id), :id => "edit_form" do |f|
     - unless @translation.errors.empty?
       #errors
         %p タイトルの翻訳が空です。

@@ -12,7 +12,7 @@ Titra.controllers :translations, :conditions => {:protect => true} do
     render 'translations/edit'
   end
 
-  post :edit, :with => :id do
+  post :update, :with => :id do
     redirect url(:login) unless logged_in?
 
     if @translation.update_attributes(params[:translation])
