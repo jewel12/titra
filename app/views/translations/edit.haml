@@ -10,10 +10,10 @@
         %td#headline_title= link_to html_escape(@translation.headline.title), html_escape(@translation.headline.url)
       %tr
         %td.label= label_tag :title, :caption => "タイトルの翻訳"
-        %td.content= f.text_area :title, :value => @translation.title, :id => "translation"
+        %td.content= f.text_area :title, :value => html_escape(@translation.title), :id => "translation"
       %tr
         %td.label= label_tag :summary, :caption => "要約やメモ"
-        %td.content= f.text_area :summary, :value => @translation.summary, :id => "summary"
+        %td.content= f.text_area :summary, :value => html_escape(@translation.summary), :id => "summary"
     %p= f.submit "要約の編集", :class => 'button'
 =javascript_include_tag 'jquery.js', 'jquery.autosize-min.js'
 :javascript

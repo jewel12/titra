@@ -11,10 +11,10 @@
     %table
       %tr
         %td.label= f.label :title, :caption => "タイトル"
-        %td.content= f.text_area :title, :value => @title
+        %td.content= f.text_area :title, :value => html_escape(@title)
       %tr
         %td.label= f.label :url, :caption => "URL"
-        %td.content= f.text_field :url, :value => @url
+        %td.content= f.text_field :url, :value => html_escape(@url)
       %tr
         %td.label= label_tag :translation, :caption => "タイトルの翻訳"
         %td.content= text_area_tag 'translation[title]', :id => "translation"
