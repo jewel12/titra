@@ -15,6 +15,7 @@
         %td.label= label_tag :summary, :caption => "要約やメモ"
         %td.content= f.text_area :summary, :value => html_escape(@translation.summary), :id => "summary"
     %p= f.submit "要約の編集", :class => 'button'
+  %p= button_to "要約の削除", url(:translations, :delete, :id => @translation.id), :method => :delete, :id => "tr_delete"
 =javascript_include_tag 'jquery.js', 'jquery.autosize-min.js'
 :javascript
   $(document).ready(function(){
