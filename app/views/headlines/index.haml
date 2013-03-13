@@ -9,7 +9,8 @@
           %span.original_title= html_escape(headline.title)
         .tr_info_right
           - unless translation.summary.blank?
-            %span.summary_info 要約を表示
+            %span.summary_summary= html_escape(translation.summary[0..40]) + '...'
+            %span.summary_info 要約を全て表示
       .tr_summary
         - unless translation.summary.blank?
           %p.summary= html_escape(translation.summary)
