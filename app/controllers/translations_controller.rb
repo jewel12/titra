@@ -22,4 +22,14 @@ Titra.controllers :translations, :conditions => {:protect => true} do
     end
   end
 
+  delete :delete, :with => :id do
+    redirect url(:login) unless logged_in?
+
+    if @translation.delete
+      redirect url_for(:profile, :index)
+    else
+      render 'translations/edit'
+    end
+  end
+
 end
